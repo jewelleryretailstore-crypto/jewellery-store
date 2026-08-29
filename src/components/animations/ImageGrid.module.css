@@ -1,0 +1,62 @@
+.imageBox {
+  /* Dynamic size based on parent container */
+  --box-width: 100%;
+  --box-height: 100%;
+  
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  width: var(--box-width);
+  height: var(--box-height);
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.fragment {
+  width: calc(100% / var(--col));
+  height: calc(100% / var(--row));
+  position: relative;
+  backface-visibility: hidden;
+  will-change: transform, opacity;
+  transform-style: preserve-3d;
+  overflow: hidden;
+  
+  /* Initial state before animation */
+  transform: var(--rotateX) var(--rotateY) scale(0.8);
+  opacity: 0;
+  
+  /* The flip animation is applied here */
+  animation: flip var(--duration) cubic-bezier(0.4, 0, 0.2, 1) var(--delay) forwards;
+}
+
+/* The actual image piece */
+.fragment::before {
+  content: "";
+  position: absolute;
+  /* Make the inner background exactly the size of the whole imageBox */
+  width: calc(var(--col) * 100%);
+  height: calc(var(--row) * 100%);
+  /* Shift it negatively by its position */
+  left: calc(var(--x) * -100%);
+  top: calc(var(--y) * -100%);
+  background-image: var(--img-url);
+  background-size: cover;
+  background-position: center;
+  backface-visibility: hidden;
+}
+
+@keyframes flip {
+  0% {
+    transform: var(--rotateX) var(--rotateY) scale(0.8);
+    opacity: 0;
+  }
+  70% {
+    transform: rotateX(0) rotateY(0) scale(0.8);
+    opacity: 1;
+  }
+  100% {
+    transform: rotateX(0) rotateY(0) scale(1.02);
+    opacity: 1;
+  }
+}

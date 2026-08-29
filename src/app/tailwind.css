@@ -1,0 +1,63 @@
+@import "tailwindcss";
+@source "../components";
+@source "../lib";
+@source "./";
+
+@theme {
+  --color-brand-ivory: #faf9f6;
+  --color-brand-champagne: #e6dfd1;
+  --color-brand-charcoal: #2d2d2d;
+  --color-brand-black: #111111;
+  --color-brand-gold: #d4af37;
+  
+  --font-serif: var(--font-playfair);
+  --font-sans: var(--font-inter);
+
+  --animate-border-beam: border-beam calc(var(--duration)*1s) infinite linear;
+
+  @keyframes border-beam {
+    100% {
+      offset-distance: 100%;
+    }
+  }
+}
+
+@layer base {
+  :root {
+    --background: var(--color-brand-ivory);
+    --foreground: var(--color-brand-black);
+  }
+
+  * {
+    border-color: var(--color-brand-champagne);
+  }
+  
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
+  }
+}
+
+/* Custom scrollbar for an elegant feel */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-brand-ivory); 
+}
+ 
+::-webkit-scrollbar-thumb {
+  background: var(--color-brand-champagne); 
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-brand-gold); 
+}
