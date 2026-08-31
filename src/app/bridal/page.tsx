@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { HeroAnimated } from "@/components/ui/HeroAnimated";
 
 export default function BridalPage() {
@@ -52,16 +53,26 @@ export default function BridalPage() {
       {/* CUSTOM EXPERIENCE */}
       <section className="bg-[#FCFBF8] border-t border-gray-100 text-[#171716] py-24 text-center px-6">
         <div className="max-w-2xl mx-auto">
-          <h4 className="uppercase tracking-widest text-sm mb-4 text-[#B89A5A]">Bespoke Design</h4>
-          <h2 className="font-serif text-4xl mb-6">Create Your Masterpiece</h2>
-          <p className="font-light text-gray-500 mb-8 leading-relaxed">
-            Work with our master jewelers to design a one-of-a-kind engagement ring that perfectly captures your vision and love story. From selecting the center stone to the final polish, we guide you through every step.
-          </p>
+          <h4 className="uppercase tracking-widest text-xs mb-4 text-[#B89A5A]">Private Bespoke</h4>
+          <h2 className="font-serif text-3xl md:text-4xl mb-8">Create something that exists nowhere else.</h2>
+          
+          <ul className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 font-sans text-xs uppercase tracking-widest text-gray-500 mb-12">
+            <li>Design consultation</li>
+            <li className="hidden md:block">·</li>
+            <li>Diamond selection</li>
+            <li className="hidden md:block">·</li>
+            <li>CAD visualisation</li>
+            <li className="hidden md:block">·</li>
+            <li>Craftsmanship</li>
+            <li className="hidden md:block">·</li>
+            <li>Final piece</li>
+          </ul>
+
           <Link 
             href="/contact"
-            className="inline-block px-10 py-4 uppercase tracking-widest text-sm text-[#171716] border border-[#171716] hover:bg-[#171716] hover:text-white transition-colors"
+            className="inline-flex items-center text-xs uppercase tracking-widest text-[#171716] border-b border-[#171716] pb-1 hover:text-[#B89A5A] hover:border-[#B89A5A] transition-colors group"
           >
-            Book a Consultation
+            Request a Private Consultation <ArrowRight className="w-3 h-3 ml-2 group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
       </section>
