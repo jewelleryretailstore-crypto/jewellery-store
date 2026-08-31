@@ -9,6 +9,7 @@ import { ProductReviews } from "@/components/product/ProductReviews";
 import { ProductAssurance } from "@/components/product/ProductAssurance";
 import { SimilarBudgetDesigns } from "@/components/product/SimilarBudgetDesigns";
 import { AddToCartButton } from "@/components/product/AddToCartButton";
+import { BuyNowButton } from "@/components/product/BuyNowButton";
 
 export const revalidate = 60;
 
@@ -99,9 +100,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           {/* Actions */}
           <div className="flex gap-4 mb-10">
             <AddToCartButton productId={product.databaseId || 0} />
-            <button className="flex-1 bg-transparent text-[#171716] py-4 uppercase tracking-widest text-[11px] font-medium transition-all duration-500 rounded-none border border-[#171716]/20 hover:border-[#171716] hover:bg-[#171716] hover:text-white">
-              Buy It Now
-            </button>
+            <BuyNowButton productId={product.databaseId || 0} />
           </div>
 
           {/* Variants & Details List */}

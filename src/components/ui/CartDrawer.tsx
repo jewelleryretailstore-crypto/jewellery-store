@@ -102,7 +102,13 @@ export function CartDrawer() {
                   <span className='font-serif text-xl'>{cart?.subtotal}</span>
                 </div>
                 <p className='text-xs text-gray-500 mb-6'>Shipping and taxes calculated at checkout.</p>
-                <button className='w-full py-4 bg-[#171716] text-white uppercase tracking-widest text-xs hover:bg-[#2A211C] transition-colors'>
+                <button 
+                  onClick={() => {
+                    setIsCartOpen(false);
+                    window.location.href = '/checkout';
+                  }}
+                  className='w-full py-4 bg-[#171716] text-white uppercase tracking-widest text-xs hover:bg-[#2A211C] transition-colors'
+                >
                   Checkout
                 </button>
               </div>
