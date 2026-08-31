@@ -153,7 +153,7 @@ export async function getProductById(id: string): Promise<Product | undefined> {
 
 export async function getProductsByCategory(categorySlug: string): Promise<Product[]> {
   const allProducts = await getAllProducts();
-  if (categorySlug === "jewellery") return allProducts;
+  if (categorySlug === "jewellery" || categorySlug === "all-jewelry") return allProducts;
   if (categorySlug === "new-in") return allProducts.filter(p => p.isNew);
   return allProducts.filter((p) => p.categories?.includes(categorySlug) || p.category === categorySlug);
 }

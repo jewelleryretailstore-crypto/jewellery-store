@@ -26,7 +26,7 @@ export default function AdminPage() {
   const [status, setStatus] = useState({ type: '', message: '' });
 
   const categories = [
-    { name: 'All Jewellery', slug: 'collections' },
+    { name: 'All Jewellery', slug: 'all-jewelry' },
     { name: 'Gold', slug: 'gold' },
     { name: 'Diamond', slug: 'diamond' },
     { name: 'Earrings', slug: 'earrings' },

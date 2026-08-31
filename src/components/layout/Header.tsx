@@ -10,7 +10,7 @@ import { useWishlist } from "@/context/WishlistContext";
 import { useCart } from "@/context/CartContext";
 
 const navLinks = [
-  { name: "All Jewellery", href: "/collections" },
+  { name: "All Jewellery", href: "/category/all-jewelry" },
   { name: "Gold", href: "/category/gold" },
   { name: "Diamond", href: "/category/diamond" },
   { name: "Earrings", href: "/category/earrings" },
