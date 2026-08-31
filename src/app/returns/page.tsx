@@ -1,40 +1,48 @@
-import { Metadata } from 'next';
-
-export const metadata: Metadata = {
-  title: 'Returns & Exchanges | Lumière & Co.',
-  description: 'Our 30-day return policy, conditions, and exchange process.',
-};
+import { DiamondWatermark } from "@/components/ui/DiamondWatermark";
 
 export default function ReturnsPage() {
   return (
-    <div className="min-h-screen pt-32 pb-24 bg-[#F7F5F0]">
-      <div className="container mx-auto px-6 max-w-3xl">
-        <h1 className="font-serif text-4xl text-[#171716] mb-8 uppercase tracking-widest">Returns & Exchanges</h1>
+    <div className="relative min-h-screen bg-white">
+      <DiamondWatermark opacity={0.03} className="inset-0" />
+      <div className="container relative z-10 mx-auto px-6 pt-32 pb-24 max-w-3xl font-sans">
+        <h1 className="font-serif text-4xl text-[#171716] mb-12 text-center">Returns & Exchanges</h1>
         
-        <div className="space-y-12 font-sans text-sm text-[#4A4945] leading-relaxed">
+        <div className="prose prose-gray max-w-none text-gray-600 space-y-8">
           <section>
-            <h2 className="text-lg font-medium text-[#171716] uppercase tracking-widest mb-4">30-Day Return Period</h2>
-            <p>We offer a complimentary 30-day return policy on all eligible purchases. If your piece isn't entirely perfect, you may return it for a full refund or exchange within 30 days of the delivery date.</p>
+            <h2 className="text-xl font-serif text-[#171716] mb-4">Our Commitment</h2>
+            <p>
+              We stand behind the exceptional quality and craftsmanship of our jewelry. If for any reason you are not entirely satisfied with your purchase, we offer a straightforward return and exchange process.
+            </p>
           </section>
 
           <section>
-            <h2 className="text-lg font-medium text-[#171716] uppercase tracking-widest mb-4">Conditions of Return</h2>
-            <p className="mb-4">To be eligible for a return, the piece must be:</p>
-            <ul className="list-disc pl-5 space-y-2">
-              <li>In its original, unworn condition with no signs of wear or damage</li>
-              <li>Accompanied by all original packaging, diamond certificates, and documentation</li>
-              <li>Returned with the original security tag intact</li>
+            <h2 className="text-xl font-serif text-[#171716] mb-4">30-Day Return Policy</h2>
+            <p>
+              You may return or exchange eligible items within 30 days of the delivery date. To be eligible for a return, the item must be unworn, in pristine condition, and returned in its original packaging with all accompanying certificates and documents.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-xl font-serif text-[#171716] mb-4">Non-Returnable Items</h2>
+            <p>
+              Please note that the following items are final sale and cannot be returned or exchanged:
+            </p>
+            <ul className="list-disc pl-5 mt-4 space-y-2">
+              <li>Custom-designed or bespoke pieces.</li>
+              <li>Jewelry that has been engraved, modified, or resized by a third party.</li>
+              <li>Items showing signs of wear, damage, or alteration.</li>
             </ul>
           </section>
 
           <section>
-            <h2 className="text-lg font-medium text-[#171716] uppercase tracking-widest mb-4">Bespoke & Personalised Exclusions</h2>
-            <p>Please note that bespoke commissions, engraved items, and rings that have been resized outside of our standard size range are final sale and cannot be returned or exchanged. We work closely with you during the design process to ensure the final piece meets your exact specifications.</p>
-          </section>
-
-          <section>
-            <h2 className="text-lg font-medium text-[#171716] uppercase tracking-widest mb-4">Refund Process</h2>
-            <p>To initiate a return, please contact our concierge team. We will arrange a complimentary insured courier collection. Once the piece is received and inspected by our quality assurance team, your refund will be processed to the original payment method within 5-7 business days.</p>
+            <h2 className="text-xl font-serif text-[#171716] mb-4">Return Process</h2>
+            <ol className="list-decimal pl-5 mt-4 space-y-2">
+              <li><strong>Contact Us:</strong> Email our client services to initiate a return and receive a Return Authorization Number (RAN).</li>
+              <li><strong>Package Securely:</strong> Place the jewelry, along with all original documents, in the original packaging.</li>
+              <li><strong>Ship:</strong> We will provide a fully insured, prepaid shipping label for your convenience.</li>
+              <li><strong>Inspection:</strong> Once received, our master jewelers will inspect the item to verify its condition.</li>
+              <li><strong>Refund:</strong> Approved returns will be refunded to the original method of payment within 5-7 business days.</li>
+            </ol>
           </section>
         </div>
       </div>

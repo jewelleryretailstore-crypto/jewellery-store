@@ -1,39 +1,44 @@
-import { Metadata } from 'next';
-
-export const metadata: Metadata = {
-  title: 'Shipping & Delivery | Lumière & Co.',
-  description: 'Information about insured shipping, delivery times, and international orders.',
-};
+import { DiamondWatermark } from "@/components/ui/DiamondWatermark";
 
 export default function ShippingPage() {
   return (
-    <div className="min-h-screen pt-32 pb-24 bg-[#F7F5F0]">
-      <div className="container mx-auto px-6 max-w-3xl">
-        <h1 className="font-serif text-4xl text-[#171716] mb-8 uppercase tracking-widest">Shipping & Delivery</h1>
+    <div className="relative min-h-screen bg-white">
+      <DiamondWatermark opacity={0.03} className="inset-0" />
+      <div className="container relative z-10 mx-auto px-6 pt-32 pb-24 max-w-3xl font-sans">
+        <h1 className="font-serif text-4xl text-[#171716] mb-12 text-center">Shipping Policy</h1>
         
-        <div className="space-y-12 font-sans text-sm text-[#4A4945] leading-relaxed">
+        <div className="prose prose-gray max-w-none text-gray-600 space-y-8">
           <section>
-            <h2 className="text-lg font-medium text-[#171716] uppercase tracking-widest mb-4">Insured Shipping</h2>
-            <p className="mb-4">All Lumière & Co. pieces are fully insured during transit. Your piece remains our complete responsibility until it is safely delivered and signed for by you.</p>
-            <p>For your security, all deliveries require a signature upon receipt and cannot be left unattended or delivered to P.O. boxes.</p>
+            <h2 className="text-xl font-serif text-[#171716] mb-4">Complimentary Shipping</h2>
+            <p>
+              We are pleased to offer complimentary fully insured shipping on all orders. Each piece of jewelry is meticulously packaged in our signature luxury presentation boxes to ensure its safe arrival.
+            </p>
           </section>
 
           <section>
-            <h2 className="text-lg font-medium text-[#171716] uppercase tracking-widest mb-4">Delivery Times</h2>
-            <ul className="space-y-4">
-              <li><strong>In-Stock Items:</strong> Dispatched within 24-48 hours. Delivery typically takes 2-3 business days within the UK, and 4-7 business days for international orders.</li>
-              <li><strong>Made-to-Order & Bespoke:</strong> Depending on the complexity of the piece, creation takes 3-6 weeks. Your concierge will provide a precise timeline during the design process.</li>
+            <h2 className="text-xl font-serif text-[#171716] mb-4">Delivery Timelines</h2>
+            <p>
+              As many of our pieces are handcrafted to order, please allow the following estimated timelines for delivery:
+            </p>
+            <ul className="list-disc pl-5 mt-4 space-y-2">
+              <li><strong>In-Stock Items:</strong> Dispatched within 2-3 business days.</li>
+              <li><strong>Made-to-Order Pieces:</strong> Requires 3-4 weeks for creation and hallmark certification.</li>
+              <li><strong>Bespoke / Custom Orders:</strong> Requires 4-6 weeks, subject to design complexity.</li>
             </ul>
           </section>
 
           <section>
-            <h2 className="text-lg font-medium text-[#171716] uppercase tracking-widest mb-4">Countries Served</h2>
-            <p>We currently ship to the UK, EU, United States, Canada, Australia, and select countries in the Middle East and Asia. If your country is not available at checkout, please contact our concierge team to arrange a special delivery.</p>
+            <h2 className="text-xl font-serif text-[#171716] mb-4">Secure & Insured Transit</h2>
+            <p>
+              Your purchase is fully insured from our atelier to your door. For your security, all deliveries require a signature from an adult upon receipt. We use premium trusted couriers (e.g., FedEx, UPS, or specialized high-value transit services).
+            </p>
           </section>
 
           <section>
-            <h2 className="text-lg font-medium text-[#171716] uppercase tracking-widest mb-4">Tracking Your Order</h2>
-            <p>Once your order has been dispatched, you will receive an email containing your tracking number and a link to monitor your delivery's progress in real-time.</p>
+            <h2 className="text-xl font-serif text-[#171716] mb-4">International Shipping</h2>
+            <p>
+              We currently ship to select international destinations. Please note that for international orders, the recipient is responsible for any applicable local customs duties, taxes, or import fees levied by the destination country.
+            </p>
           </section>
         </div>
       </div>

@@ -1,46 +1,46 @@
-import { Metadata } from 'next';
-
-export const metadata: Metadata = {
-  title: 'Lifetime Warranty | Lumière & Co.',
-  description: 'Details about our lifetime warranty and repair services.',
-};
+import { DiamondWatermark } from "@/components/ui/DiamondWatermark";
 
 export default function WarrantyPage() {
   return (
-    <div className="min-h-screen pt-32 pb-24 bg-[#F7F5F0]">
-      <div className="container mx-auto px-6 max-w-3xl">
-        <h1 className="font-serif text-4xl text-[#171716] mb-8 uppercase tracking-widest">Lifetime Warranty</h1>
+    <div className="relative min-h-screen bg-white">
+      <DiamondWatermark opacity={0.03} className="inset-0" />
+      <div className="container relative z-10 mx-auto px-6 pt-32 pb-24 max-w-3xl font-sans">
+        <h1 className="font-serif text-4xl text-[#171716] mb-12 text-center">Lifetime Warranty</h1>
         
-        <div className="space-y-12 font-sans text-sm text-[#4A4945] leading-relaxed">
+        <div className="prose prose-gray max-w-none text-gray-600 space-y-8">
           <section>
-            <h2 className="text-lg font-medium text-[#171716] uppercase tracking-widest mb-4">Our Guarantee</h2>
-            <p>We stand behind the exceptional craftsmanship of every Lumière & Co. piece. We offer a comprehensive lifetime warranty against any manufacturing defects.</p>
+            <h2 className="text-xl font-serif text-[#171716] mb-4">Exceptional Craftsmanship, Guaranteed</h2>
+            <p>
+              We take immense pride in the uncompromising quality of our jewelry. Every piece undergoes rigorous quality control by our master craftsmen before it is delivered to you. To ensure your peace of mind, we proudly offer a comprehensive Lifetime Warranty against manufacturing defects.
+            </p>
           </section>
 
           <section>
-            <h2 className="text-lg font-medium text-[#171716] uppercase tracking-widest mb-4">What is Covered</h2>
-            <ul className="list-disc pl-5 space-y-2">
-              <li>Structural faults in the metalwork</li>
-              <li>Loose diamonds or gemstones due to manufacturing defects</li>
-              <li>Complimentary professional cleaning and prong inspection once a year</li>
+            <h2 className="text-xl font-serif text-[#171716] mb-4">What Is Covered</h2>
+            <p>
+              Our Lifetime Warranty covers structural and manufacturing defects. If a piece fails due to a fault in its production, we will repair or replace it at no cost to you. This includes issues such as porosity in the metal or faulty settings that were present at the time of purchase.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-xl font-serif text-[#171716] mb-4">What Is Not Covered</h2>
+            <p>
+              Fine jewelry requires proper care. Our warranty does not cover:
+            </p>
+            <ul className="list-disc pl-5 mt-4 space-y-2">
+              <li>Normal wear and tear (such as scratches, bent rings, or worn-down prongs).</li>
+              <li>Damage resulting from trauma, dropping, or improper storage.</li>
+              <li>Loss of stones due to damaged or worn-out prongs (we recommend annual prong inspections).</li>
+              <li>Discoloration caused by exposure to chemicals, perfumes, cosmetics, or swimming pools.</li>
+              <li>Any piece that has been repaired, resized, or altered by a third-party jeweler.</li>
             </ul>
           </section>
 
           <section>
-            <h2 className="text-lg font-medium text-[#171716] uppercase tracking-widest mb-4">What is Not Covered</h2>
-            <p className="mb-4">Our warranty does not cover issues resulting from normal wear and tear, accidents, or improper care. This includes:</p>
-            <ul className="list-disc pl-5 space-y-2">
-              <li>Discoloration due to exposure to chemicals, make-up, swimming pools, or hot tubs</li>
-              <li>Prongs that have worn down over time</li>
-              <li>Bent, caught, or worn out prongs allowing a stone to fall out</li>
-              <li>Lost or stolen pieces</li>
-            </ul>
-            <p className="mt-4">Please note: Any maintenance, repairs, sizing, or other services performed by a third-party jeweller will void your Lumière warranty.</p>
-          </section>
-
-          <section>
-            <h2 className="text-lg font-medium text-[#171716] uppercase tracking-widest mb-4">Repair Process</h2>
-            <p>Should your piece require attention, contact our concierge. We will arrange a secure assessment of the item. If the issue is covered under warranty, we will repair it free of charge. If the repair is not covered, we will provide a transparent quote for your approval before commencing any work.</p>
+            <h2 className="text-xl font-serif text-[#171716] mb-4">Complimentary Services</h2>
+            <p>
+              As part of our commitment to your jewelry's longevity, we offer complimentary professional cleaning, prong inspections, and one free ring resizing within the first year of purchase.
+            </p>
           </section>
         </div>
       </div>
