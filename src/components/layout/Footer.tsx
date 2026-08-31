@@ -8,6 +8,14 @@ export default function Footer() {
     <footer className="relative text-[#F7F5F0] bg-[#171716] overflow-hidden pt-20 pb-10">
       <DiamondBackground className="absolute inset-0 z-0" diamondSize={50} diamondMargin={1.5} />
       <div className="container mx-auto px-6 relative z-10 pointer-events-none [&_a]:pointer-events-auto [&_button]:pointer-events-auto [&_input]:pointer-events-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+          {/* Brand & Newsletter Section */}
+          <div className="lg:col-span-1">
+            <div className="flex items-center gap-4 mb-4">
+              <Monogram />
+              <h2 className="font-serif text-2xl text-white uppercase tracking-widest">Lumière</h2>
+            </div>
+            <p className="text-gray-400 mb-8 font-serif italic text-sm">
               Fine jewellery, thoughtfully made.
             </p>
             <form className="relative max-w-sm mt-4 group">
@@ -52,7 +60,7 @@ export default function Footer() {
             <ul className="space-y-4 font-sans text-gray-200 text-sm font-light">
               <li><Link href="/about" className="hover:text-white transition-colors">Our Story</Link></li>
               <li><Link href="/craftsmanship" className="hover:text-white transition-colors">Craftsmanship</Link></li>
-              <li><Link href="/diamonds" className="hover:text-white transition-colors">Diamonds</Link></li>
+              <li><Link href="/lab-grown-diamonds" className="hover:text-white transition-colors">Diamond Education</Link></li>
               <li><Link href="/sustainability" className="hover:text-white transition-colors">Sustainability</Link></li>
               <li><Link href="/journal" className="hover:text-white transition-colors">Journal</Link></li>
             </ul>
