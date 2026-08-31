@@ -161,7 +161,7 @@ export default function ProductCard({ product }: ProductCardProps) {
             {product.material}{product.carat && ` · ${product.carat}`}
           </p>
           <p className="font-sans text-sm text-[#171716] font-medium tracking-wide">
-            ${product.price.toLocaleString()}
+            ₹{product.price.toLocaleString()}
           </p>
         </div>
       </Link>

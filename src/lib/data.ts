@@ -5,6 +5,7 @@ export type Product = {
   databaseId?: number;
   name: string;
   category: string;
+  categories?: string[];
   price: number;
   image: string;
   hoverImage: string;
@@ -120,13 +121,15 @@ export async function getAllProducts(): Promise<Product[]> {
     
     if (data?.products?.nodes) {
       wpProducts = data.products.nodes.map((node: any): Product => {
-        const categorySlug = node.productCategories?.nodes?.[0]?.slug || 'uncategorized';
+        const categorySlugs = node.productCategories?.nodes?.map((cat: any) => cat.slug) || ['uncategorized'];
+        const primaryCategory = categorySlugs[0];
         
         return {
           id: node.slug, // Use slug as ID for clean URLs
           databaseId: node.databaseId,
           name: node.name,
-          category: categorySlug,
+          category: primaryCategory,
+          categories: categorySlugs,
           price: parseWooPrice(node.price),
           image: node.image?.sourceUrl || '/images/diamond.webp',
           hoverImage: node.galleryImages?.nodes?.[1]?.sourceUrl || node.galleryImages?.nodes?.[0]?.sourceUrl || node.image?.sourceUrl || '/images/diamond.webp',
@@ -152,7 +155,7 @@ export async function getProductsByCategory(categorySlug: string): Promise<Produ
   const allProducts = await getAllProducts();
   if (categorySlug === "jewellery") return allProducts;
   if (categorySlug === "new-in") return allProducts.filter(p => p.isNew);
-  return allProducts.filter((p) => p.category === categorySlug);
+  return allProducts.filter((p) => p.categories?.includes(categorySlug) || p.category === categorySlug);
 }
 
 export async function getProducts(): Promise<Product[]> {

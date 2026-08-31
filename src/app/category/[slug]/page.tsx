@@ -27,7 +27,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
     'rings': '/images/RR-039-01Rose-_view3.webp',
     'earrings': '/images/GJSPD-197-01White-_view5.webp',
     'gold': '/images/Gem 01_Yellow_Metal 02_0_1_1_1.webp',
-    'diamonds': '/images/diamond.webp',
+    'diamond': '/images/diamond.webp',
     'wedding': 'https://upload.wikimedia.org/wikipedia/commons/7/79/Indian_bride_with_Jewellery.jpg',
     'gifting': '/images/lifestyle_bg.jpg',
     'default': '/images/homepage hero.png'

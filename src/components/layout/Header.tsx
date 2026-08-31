@@ -12,11 +12,11 @@ import { useCart } from "@/context/CartContext";
 const navLinks = [
   { name: "All Jewellery", href: "/collections" },
   { name: "Gold", href: "/category/gold" },
-  { name: "Diamond", href: "/category/diamonds" },
+  { name: "Diamond", href: "/category/diamond" },
   { name: "Earrings", href: "/category/earrings" },
   { name: "Daily Wear", href: "/category/daily-wear" },
   { name: "Gemstone", href: "/category/gemstone" },
-  { name: "Wedding", href: "/bridal" },
+  { name: "Wedding", href: "/category/wedding" },
   { name: "Gifting", href: "/category/gifting" },
   { name: "Under 50K", href: "/category/under-50k" },
 ];

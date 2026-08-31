@@ -29,7 +29,7 @@ export default function ProductConfigurator() {
           <span className="stars">★★★★★</span> (128 Reviews)
         </div>
         <h1 className="product-title">Lab-Grown Solitaire Marquise Diamond Engagement Ring</h1>
-        <p className="product-price">$2,450.00</p>
+        <p className="product-price">₹1,45,000</p>
         <p className="product-tax text-sans">Inclusive of all taxes</p>
       </div>
 

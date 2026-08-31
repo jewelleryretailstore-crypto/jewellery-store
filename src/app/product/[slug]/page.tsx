@@ -92,7 +92,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             </p>
           </div>
 
-          <p className="text-xl font-medium mb-8">${product.price.toLocaleString()}</p>
+          <p className="text-xl font-medium mb-8">₹{product.price.toLocaleString()}</p>
 
           {/* Actions */}
           <div className="flex gap-4 mb-10">

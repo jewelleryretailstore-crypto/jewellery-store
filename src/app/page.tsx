@@ -177,11 +177,11 @@ export default async function Home() {
                   className="object-cover scale-100 group-hover:scale-[1.03] transition-transform duration-1000"
                 />
                 <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-500" />
-                <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-6">
-                  <h3 className="font-serif text-2xl text-white mb-3">Gifts Under $1,000</h3>
-                  <span className="inline-flex items-center text-xs uppercase tracking-widest text-white font-medium group-hover:text-[#B89A5A] transition-colors">
-                    Shop Gifts <ArrowRight className="w-3 h-3 ml-2 group-hover:translate-x-1 transition-transform" />
-                  </span>
+                <div className="absolute inset-0 bg-black/40 flex flex-col items-center justify-center p-6 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  <h3 className="font-serif text-2xl text-white mb-3">Gifts Under ₹50,000</h3>
+                  <Link href="/category/under-50k" className="text-white text-xs uppercase tracking-widest border-b border-white pb-1 hover:text-[#B89A5A] hover:border-[#B89A5A] transition-colors">
+                    Shop Curated Gifts
+                  </Link>
                 </div>
               </Link>
             </div>

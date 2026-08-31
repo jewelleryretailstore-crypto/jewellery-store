@@ -76,7 +76,7 @@ export default function QuickViewModal({ product, isOpen, onClose }: QuickViewMo
             <span className="text-[11px] font-medium text-gray-500 uppercase tracking-widest">Customer Reviews</span>
           </div>
 
-          <p className="text-xl font-medium mb-8">${product.price.toLocaleString()}</p>
+          <p className="text-xl font-medium mb-8">₹{product.price.toLocaleString()}</p>
           
           <p className="font-light text-gray-600 text-sm leading-relaxed mb-8">
             {product.material}{product.carat ? ` with ${product.carat} diamonds` : ''}. A masterpiece of the Lumière collection, designed to be worn and loved for a lifetime.
