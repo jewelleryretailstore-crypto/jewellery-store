@@ -76,9 +76,11 @@ export const MOCK_PRODUCTS: Product[] = [
 ];
 
 // Helper function to parse WooCommerce price strings (e.g. "₹38,000.00" -> 38000)
-function parseWooPrice(priceString?: string): number {
+function parseWooPrice(priceString: string): number {
   if (!priceString) return 0;
-  return Number(priceString.replace(/[^\d.-]/g, ''));
+  // If it's a range (e.g., "₹11,868.00 - ₹19,000.00"), take the first price
+  const firstPriceStr = priceString.split('-')[0];
+  return Number(firstPriceStr.replace(/[^\d.-]/g, ''));
 }
 
 export async function getAllProducts(): Promise<Product[]> {

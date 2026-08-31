@@ -7,6 +7,8 @@ import { FeatureCarousel } from "@/components/ui/FeatureCarousel";
 import { getProducts } from "@/lib/data";
 import ProductCard from "@/components/ui/ProductCard";
 
+export const revalidate = 60;
+
 export default async function Home() {
   const allProducts = await getProducts();
   const newArrivals = allProducts.slice(0, 4);

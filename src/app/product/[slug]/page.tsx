@@ -10,6 +10,8 @@ import { ProductAssurance } from "@/components/product/ProductAssurance";
 import { SimilarBudgetDesigns } from "@/components/product/SimilarBudgetDesigns";
 import { AddToCartButton } from "@/components/product/AddToCartButton";
 
+export const revalidate = 60;
+
 export default async function ProductPage({ params }: { params: Promise<{ slug: string }> }) {
   const resolvedParams = await params;
   const product = await getProductById(resolvedParams.slug);

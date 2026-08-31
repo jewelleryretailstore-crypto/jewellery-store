@@ -7,6 +7,8 @@ import CategoryFilterBar from "@/components/ui/CategoryFilterBar";
 import { HeroAnimated } from "@/components/ui/HeroAnimated";
 import { supabase } from "@/lib/supabase";
 
+export const revalidate = 60;
+
 export default async function CategoryPage({ params }: { params: Promise<{ slug: string }> }) {
   const resolvedParams = await params;
   const products = await getProductsByCategory(resolvedParams.slug);
