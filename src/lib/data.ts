@@ -17,61 +17,83 @@ export type Product = {
 
 export const MOCK_PRODUCTS: Product[] = [
   {
-    id: "rng-001",
-    name: "Classic Solitaire Engagement Ring",
+    id: "lumiere-solitaire-ring",
+    name: "Lumière Solitaire Ring",
     category: "rings",
-    price: 1250,
-    image: "/images/RR-039-01White-_view5.webp",
-    hoverImage: "/images/Gem 01_White_Metal 02_0_1_1_1.webp",
-    material: "18K White Gold",
-    diamondType: "Lab-Grown Diamond",
-    carat: "1.5ct",
-    isNew: true
-  },
-  {
-    id: "rng-002",
-    name: "Vintage Halo Diamond Ring",
-    category: "rings",
-    price: 1850,
-    image: "/images/RR-039-01Yellow-_view2.webp",
-    hoverImage: "/images/Gem 01_Yellow_Metal 02_0_1_1_1.webp",
-    material: "18K Yellow Gold",
-    diamondType: "Natural Diamond",
-    carat: "1.0ct"
-  },
-  {
-    id: "ear-001",
-    name: "Diamond Stud Earrings",
-    category: "earrings",
-    price: 850,
-    image: "/images/L2-27_10011LBWhite-_view3.webp",
-    hoverImage: "/images/L2-27_10011LBWhite-_view5.webp",
-    material: "14K White Gold",
-    diamondType: "Lab-Grown Diamond",
-    carat: "0.5ct",
-  },
-  {
-    id: "nck-001",
-    name: "Pear Cut Diamond Pendant",
-    category: "necklaces",
-    price: 1450,
-    image: "/images/GJSPD-197-01Yellow-_view5(1).webp",
-    hoverImage: "/images/GJSPD-197-01White-_view3.webp",
-    material: "18K Yellow Gold",
-    diamondType: "Natural Diamond",
-    carat: "0.75ct"
-  },
-  {
-    id: "rng-003",
-    name: "Rose Gold Promise Ring",
-    category: "rings",
-    price: 1100,
+    price: 145000,
     image: "/images/RR-039-01Rose-_view3.webp",
     hoverImage: "/images/RR-039-01Rose-_view5.webp",
     material: "18K Rose Gold",
-    diamondType: "Lab-Grown Diamond",
-    carat: "1.2ct",
+    carat: "1.00ct",
     isNew: true
+  },
+  {
+    id: "celestial-diamond-necklace",
+    name: "Celestial Diamond Necklace",
+    category: "necklaces",
+    price: 85000,
+    image: "/images/Gem 01_White_Metal 02_0_1_1_1.webp",
+    hoverImage: "/images/Gem 01_Yellow_Metal 02_0_1_1_1.webp",
+    material: "18K White Gold",
+    carat: "0.50ct"
+  },
+  {
+    id: "eternity-diamond-band",
+    name: "Eternity Diamond Band",
+    category: "wedding",
+    price: 65000,
+    image: "/images/L2-27_10011LBWhite-_view3.webp",
+    hoverImage: "/images/L2-27_10011LBWhite-_view5.webp",
+    material: "Platinum",
+    carat: "0.75ct"
+  },
+  {
+    id: "aurora-pearl-drop-earrings",
+    name: "Aurora Pearl Drop Earrings",
+    category: "earrings",
+    price: 45000,
+    image: "/images/GJSPD-197-01White-_view3.webp",
+    hoverImage: "/images/GJSPD-197-01White-_view5.webp",
+    material: "14K Yellow Gold"
+  },
+  {
+    id: "starlight-diamond-bracelet",
+    name: "Starlight Diamond Bracelet",
+    category: "bracelets",
+    price: 120000,
+    image: "/images/diamond.webp",
+    hoverImage: "/images/diamond.webp",
+    material: "18K White Gold",
+    carat: "2.00ct",
+    isNew: true
+  },
+  {
+    id: "signature-gold-hoops",
+    name: "Signature Gold Hoops",
+    category: "earrings",
+    price: 25000,
+    image: "/images/GJSPD-197-01Yellow-_view5(1).webp",
+    hoverImage: "/images/GJSPD-197-01White-_view5.webp",
+    material: "18K Yellow Gold"
+  },
+  {
+    id: "vintage-emerald-ring",
+    name: "Vintage Emerald Ring",
+    category: "gemstone",
+    price: 180000,
+    image: "/images/Gem 01_Rose_Gem 02.webp",
+    hoverImage: "/images/RR-039-01Rose-_view3.webp",
+    material: "18K Yellow Gold",
+    carat: "1.50ct"
+  },
+  {
+    id: "custom-initial-pendant",
+    name: "Custom Initial Pendant",
+    category: "gifting",
+    price: 35000,
+    image: "/images/lifestyle_bg.jpg",
+    hoverImage: "/images/lifestyle_bg.jpg",
+    material: "14K Rose Gold"
   }
 ];
 

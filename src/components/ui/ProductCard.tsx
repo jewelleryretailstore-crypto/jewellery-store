@@ -104,7 +104,8 @@ export default function ProductCard({ product }: ProductCardProps) {
           <ArrowLeftRight className="w-4 h-4" />
         </button>
 
-        <Link href={`/product/${product.id}`} className="block">
+        <Link href={`/product/${product.id}`} className="absolute inset-0 z-10" />
+        
         {/* IMAGE CONTAINER */}
         <div 
           className="relative aspect-[3/4] overflow-hidden bg-[#F7F5F0] mb-4 shadow-[0_0_0_1px_rgba(0,0,0,0.03)] transition-shadow duration-500 group-hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)]"
@@ -142,7 +143,7 @@ export default function ProductCard({ product }: ProductCardProps) {
                 e.stopPropagation();
                 setIsQuickViewOpen(true);
               }}
-              className="w-full rounded-none bg-white/60 backdrop-blur-md text-[#171716] py-3 text-xs uppercase tracking-widest font-medium transition-all duration-500 border border-gray-300 hover:border-[#B89A5A] hover:bg-white hover:shadow-lg"
+              className="w-full relative z-20 rounded-none bg-white/60 backdrop-blur-md text-[#171716] py-3 text-xs uppercase tracking-widest font-medium transition-all duration-500 border border-gray-300 hover:border-[#B89A5A] hover:bg-white hover:shadow-lg"
             >
               Quick View
             </button>
@@ -151,7 +152,7 @@ export default function ProductCard({ product }: ProductCardProps) {
 
         {/* DETAILS */}
         <div 
-          className="flex flex-col items-center text-center px-2 mt-2"
+          className="flex flex-col items-center text-center px-2 mt-2 pointer-events-none"
           style={{ transform: "translateZ(10px)" }}
         >
           <h3 className="font-serif text-[15px] md:text-base text-[#171716] mb-1 group-hover:text-yellow-700 transition-colors duration-300">
@@ -164,7 +165,6 @@ export default function ProductCard({ product }: ProductCardProps) {
             ₹{product.price.toLocaleString()}
           </p>
         </div>
-      </Link>
     </motion.div>
     
     {/* Quick View Modal rendered via Portal */}
