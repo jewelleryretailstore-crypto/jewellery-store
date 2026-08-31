@@ -15,6 +15,7 @@ export type Product = {
   image: string;
   hoverImage: string;
   material: string;
+  diamondType?: string;
   attributes?: ProductAttribute[];
   carat?: string;
   isNew?: boolean;
