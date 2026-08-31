@@ -10,6 +10,8 @@ export type CategoryHero = {
   image_src: string;
   title: string;
   subtitle: string;
+  cta_text?: string;
+  cta_link?: string;
   created_at?: string;
   updated_at?: string;
 };

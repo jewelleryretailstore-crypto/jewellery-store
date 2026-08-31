@@ -50,8 +50,8 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
         imageAlt={heroConfig?.title || defaultTitle}
         title={heroConfig?.title || defaultTitle}
         subtitle={heroConfig?.subtitle || `Discover our curated collection of ${defaultTitle.toLowerCase()}, crafted with precision and passion for the modern aesthete.`}
-        buttonText="Explore Collection"
-        buttonLink="#collection"
+        buttonText={heroConfig?.cta_text || "Explore Collection"}
+        buttonLink={heroConfig?.cta_link || "#collection"}
       />
       
       <div id="collection" className="container relative z-10 mx-auto px-6 pb-24 pt-12">
