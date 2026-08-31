@@ -4,6 +4,7 @@ const query = `
     products(first: 50) {
       nodes {
         id
+        databaseId
         name
         ... on VariableProduct {
           attributes {

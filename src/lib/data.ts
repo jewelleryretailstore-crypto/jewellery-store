@@ -5,6 +5,12 @@ export type ProductAttribute = {
   options: string[];
 };
 
+export type ProductVariation = {
+  databaseId: number;
+  price: number;
+  attributes: { name: string; value: string }[];
+};
+
 export type Product = {
   id: string;
   databaseId?: number;
@@ -17,6 +23,7 @@ export type Product = {
   material: string;
   diamondType?: string;
   attributes?: ProductAttribute[];
+  variations?: ProductVariation[];
   carat?: string;
   isNew?: boolean;
 };
@@ -153,6 +160,18 @@ export async function getAllProducts(): Promise<Product[]> {
                   options
                 }
               }
+              variations {
+                nodes {
+                  databaseId
+                  price
+                  attributes {
+                    nodes {
+                      name
+                      value
+                    }
+                  }
+                }
+              }
             }
           }
         }
@@ -172,6 +191,13 @@ export async function getAllProducts(): Promise<Product[]> {
           options: attr.options
         })) || [];
         
+        // Map variations
+        const variations: ProductVariation[] = node.variations?.nodes?.map((v: any) => ({
+          databaseId: v.databaseId,
+          price: parseWooPrice(v.price),
+          attributes: v.attributes?.nodes?.map((a: any) => ({ name: a.name, value: a.value })) || []
+        })) || [];
+        
         return {
           id: node.slug, // Use slug as ID for clean URLs
           databaseId: node.databaseId,
@@ -182,7 +208,9 @@ export async function getAllProducts(): Promise<Product[]> {
           image: node.image?.sourceUrl || '/images/diamond.webp',
           hoverImage: node.galleryImages?.nodes?.[1]?.sourceUrl || node.galleryImages?.nodes?.[0]?.sourceUrl || node.image?.sourceUrl || '/images/diamond.webp',
           material: '18K Gold', // Default placeholder
+          diamondType: node.diamondType,
           attributes: attributes,
+          variations: variations,
           isNew: true
         };
       });

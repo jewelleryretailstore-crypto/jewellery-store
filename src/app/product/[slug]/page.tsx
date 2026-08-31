@@ -8,9 +8,7 @@ import ProductCard from "@/components/ui/ProductCard";
 import { ProductReviews } from "@/components/product/ProductReviews";
 import { ProductAssurance } from "@/components/product/ProductAssurance";
 import { SimilarBudgetDesigns } from "@/components/product/SimilarBudgetDesigns";
-import { AddToCartButton } from "@/components/product/AddToCartButton";
-import { BuyNowButton } from "@/components/product/BuyNowButton";
-import { ProductVariants } from "@/components/product/ProductVariants";
+import { ProductActions } from "@/components/product/ProductActions";
 
 export const revalidate = 60;
 
@@ -96,42 +94,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             </p>
           </div>
 
-          <p className="text-xl font-medium mb-8">₹{product.price.toLocaleString()}</p>
-
-          {/* Actions */}
-          <div className="flex gap-4 mb-10">
-            <AddToCartButton productId={product.databaseId || 0} />
-            <BuyNowButton productId={product.databaseId || 0} />
-          </div>
-
-          {/* Variants & Details List */}
-          {product.attributes && product.attributes.length > 0 ? (
-            <ProductVariants attributes={product.attributes}>
-              {/* Collection Row */}
-              <div className="border-b border-gray-200 py-4 flex justify-between items-center">
-                <span className="text-[11px] uppercase tracking-widest font-medium text-gray-900">Collection</span>
-                <span className="text-[11px] text-gray-500 mr-5">Lumière Signature</span>
-              </div>
-              {/* Vendor Code Row */}
-              <div className="border-b border-gray-200 py-4 flex justify-between items-center">
-                <span className="text-[11px] uppercase tracking-widest font-medium text-gray-900">Vendor Code</span>
-                <span className="text-[11px] text-gray-500 mr-5">{product.id.split('-').join('').slice(0,8).toUpperCase()}</span>
-              </div>
-            </ProductVariants>
-          ) : (
-            <div className="border-t border-gray-200 mb-10">
-              {/* Collection Row */}
-              <div className="border-b border-gray-200 py-4 flex justify-between items-center">
-                <span className="text-[11px] uppercase tracking-widest font-medium text-gray-900">Collection</span>
-                <span className="text-[11px] text-gray-500 mr-5">Lumière Signature</span>
-              </div>
-              {/* Vendor Code Row */}
-              <div className="border-b border-gray-200 py-4 flex justify-between items-center">
-                <span className="text-[11px] uppercase tracking-widest font-medium text-gray-900">Vendor Code</span>
-                <span className="text-[11px] text-gray-500 mr-5">{product.id.split('-').join('').slice(0,8).toUpperCase()}</span>
-              </div>
-            </div>
-          )}
+          <ProductActions product={product} />
 
           {/* Trust Highlights */}
           <div className="grid grid-cols-3 gap-4 border-y border-gray-200 py-6 mb-8">
