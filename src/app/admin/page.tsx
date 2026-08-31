@@ -6,7 +6,7 @@ import { auth, googleProvider } from '@/lib/firebase';
 import { supabase } from '@/lib/supabase';
 import { DiamondWatermark } from '@/components/ui/DiamondWatermark';
 
-const ALLOWED_EMAILS = ['jewelleryretailstore@gmail.com', 'desairashmi86@gmail.com']; // Add admin emails here
+const ALLOWED_UIDS: string[] = []; // Add admin UIDs here
 
 export default function AdminPage() {
   const [user, setUser] = useState<User | null>(null);
@@ -40,12 +40,13 @@ export default function AdminPage() {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      if (currentUser && currentUser.email) {
-        const emailEnv = process.env.NEXT_PUBLIC_ADMIN_EMAILS;
-        const allowed = emailEnv ? emailEnv.split(',').map(e => e.trim()) : ALLOWED_EMAILS;
-        if (allowed.includes(currentUser.email)) {
+      if (currentUser && currentUser.uid) {
+        const uidEnv = process.env.NEXT_PUBLIC_ADMIN_UIDS;
+        const allowed = uidEnv ? uidEnv.split(',').map(e => e.trim()) : ALLOWED_UIDS;
+        if (allowed.includes(currentUser.uid)) {
           setIsAuthorized(true);
         } else {
+          console.warn('Unauthorized login attempt by UID:', currentUser.uid);
           setIsAuthorized(false);
         }
       }
