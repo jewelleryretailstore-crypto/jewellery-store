@@ -1,5 +1,10 @@
 import { fetchGraphQL } from './wordpress';
 
+export type ProductAttribute = {
+  name: string;
+  options: string[];
+};
+
 export type Product = {
   id: string;
   databaseId?: number;
@@ -10,7 +15,7 @@ export type Product = {
   image: string;
   hoverImage: string;
   material: string;
-  diamondType?: string;
+  attributes?: ProductAttribute[];
   carat?: string;
   isNew?: boolean;
 };
@@ -132,9 +137,21 @@ export async function getAllProducts(): Promise<Product[]> {
             }
             ... on SimpleProduct {
               price
+              attributes {
+                nodes {
+                  name
+                  options
+                }
+              }
             }
             ... on VariableProduct {
               price
+              attributes {
+                nodes {
+                  name
+                  options
+                }
+              }
             }
           }
         }
@@ -148,6 +165,12 @@ export async function getAllProducts(): Promise<Product[]> {
         const categorySlugs = node.productCategories?.nodes?.map((cat: any) => cat.slug) || ['uncategorized'];
         const primaryCategory = categorySlugs[0];
         
+        // Map attributes
+        const attributes: ProductAttribute[] = node.attributes?.nodes?.map((attr: any) => ({
+          name: attr.name,
+          options: attr.options
+        })) || [];
+        
         return {
           id: node.slug, // Use slug as ID for clean URLs
           databaseId: node.databaseId,
@@ -158,6 +181,7 @@ export async function getAllProducts(): Promise<Product[]> {
           image: node.image?.sourceUrl || '/images/diamond.webp',
           hoverImage: node.galleryImages?.nodes?.[1]?.sourceUrl || node.galleryImages?.nodes?.[0]?.sourceUrl || node.image?.sourceUrl || '/images/diamond.webp',
           material: '18K Gold', // Default placeholder
+          attributes: attributes,
           isNew: true
         };
       });

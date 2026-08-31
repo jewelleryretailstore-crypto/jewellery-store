@@ -104,53 +104,21 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             </button>
           </div>
 
-          {/* Variants Configuration List */}
+          {/* Variants & Details List */}
           <div className="border-t border-gray-200 mb-10">
-            
-            {/* Size Row */}
-            {product.category === "rings" && (
-              <div className="border-b border-gray-200 py-4 flex justify-between items-center group cursor-pointer hover:bg-gray-50 transition-colors">
-                <span className="text-[11px] uppercase tracking-widest font-medium text-gray-900">Size</span>
+            {product.attributes?.map((attr: any) => (
+              <div key={attr.name} className="border-b border-gray-200 py-4 flex justify-between items-center group cursor-pointer hover:bg-gray-50 transition-colors">
+                <span className="text-[11px] uppercase tracking-widest font-medium text-gray-900">{attr.name}</span>
                 <div className="flex items-center gap-2">
                   <select className="bg-transparent text-[11px] text-gray-500 outline-none text-right cursor-pointer appearance-none">
-                    <option>US 4</option>
-                    <option>US 5</option>
-                    <option>US 6</option>
-                    <option>US 7</option>
-                    <option>US 8</option>
+                    {attr.options.map((opt: string) => (
+                      <option key={opt} value={opt}>{opt}</option>
+                    ))}
                   </select>
                   <ChevronRight className="w-3 h-3 text-gray-400 group-hover:text-[#171716] transition-colors rotate-90" />
                 </div>
               </div>
-            )}
-
-            {/* Gemstone Row */}
-            {product.diamondType && (
-              <div className="border-b border-gray-200 py-4 flex justify-between items-center group cursor-pointer hover:bg-gray-50 transition-colors">
-                <span className="text-[11px] uppercase tracking-widest font-medium text-gray-900">Gemstone</span>
-                <div className="flex items-center gap-2">
-                  <select className="bg-transparent text-[11px] text-gray-500 outline-none text-right cursor-pointer appearance-none">
-                    <option>Lab-Grown Diamonds</option>
-                    <option>Natural Diamonds</option>
-                  </select>
-                  <ChevronRight className="w-3 h-3 text-gray-400 group-hover:text-[#171716] transition-colors rotate-90" />
-                </div>
-              </div>
-            )}
-
-            {/* Metal Row */}
-            <div className="border-b border-gray-200 py-4 flex justify-between items-center group cursor-pointer hover:bg-gray-50 transition-colors">
-              <span className="text-[11px] uppercase tracking-widest font-medium text-gray-900">Metal</span>
-              <div className="flex items-center gap-2">
-                <select className="bg-transparent text-[11px] text-gray-500 outline-none text-right cursor-pointer appearance-none">
-                  <option>18K Yellow Gold</option>
-                  <option>18K White Gold</option>
-                  <option>18K Rose Gold</option>
-                  <option>Platinum</option>
-                </select>
-                <ChevronRight className="w-3 h-3 text-gray-400 group-hover:text-[#171716] transition-colors rotate-90" />
-              </div>
-            </div>
+            ))}
 
             {/* Collection Row */}
             <div className="border-b border-gray-200 py-4 flex justify-between items-center">
