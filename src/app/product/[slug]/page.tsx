@@ -10,6 +10,7 @@ import { ProductAssurance } from "@/components/product/ProductAssurance";
 import { SimilarBudgetDesigns } from "@/components/product/SimilarBudgetDesigns";
 import { AddToCartButton } from "@/components/product/AddToCartButton";
 import { BuyNowButton } from "@/components/product/BuyNowButton";
+import { ProductVariants } from "@/components/product/ProductVariants";
 
 export const revalidate = 60;
 
@@ -104,33 +105,33 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           </div>
 
           {/* Variants & Details List */}
-          <div className="border-t border-gray-200 mb-10">
-            {product.attributes?.map((attr: any) => (
-              <div key={attr.name} className="border-b border-gray-200 py-4 flex justify-between items-center group cursor-pointer hover:bg-gray-50 transition-colors">
-                <span className="text-[11px] uppercase tracking-widest font-medium text-gray-900">{attr.name}</span>
-                <div className="flex items-center gap-2">
-                  <select className="bg-transparent text-[11px] text-gray-500 outline-none text-right cursor-pointer appearance-none">
-                    {attr.options.map((opt: string) => (
-                      <option key={opt} value={opt}>{opt}</option>
-                    ))}
-                  </select>
-                  <ChevronRight className="w-3 h-3 text-gray-400 group-hover:text-[#171716] transition-colors rotate-90" />
-                </div>
+          {product.attributes && product.attributes.length > 0 ? (
+            <ProductVariants attributes={product.attributes}>
+              {/* Collection Row */}
+              <div className="border-b border-gray-200 py-4 flex justify-between items-center">
+                <span className="text-[11px] uppercase tracking-widest font-medium text-gray-900">Collection</span>
+                <span className="text-[11px] text-gray-500 mr-5">Lumière Signature</span>
               </div>
-            ))}
-
-            {/* Collection Row */}
-            <div className="border-b border-gray-200 py-4 flex justify-between items-center">
-              <span className="text-[11px] uppercase tracking-widest font-medium text-gray-900">Collection</span>
-              <span className="text-[11px] text-gray-500 mr-5">Lumière Signature</span>
+              {/* Vendor Code Row */}
+              <div className="border-b border-gray-200 py-4 flex justify-between items-center">
+                <span className="text-[11px] uppercase tracking-widest font-medium text-gray-900">Vendor Code</span>
+                <span className="text-[11px] text-gray-500 mr-5">{product.id.split('-').join('').slice(0,8).toUpperCase()}</span>
+              </div>
+            </ProductVariants>
+          ) : (
+            <div className="border-t border-gray-200 mb-10">
+              {/* Collection Row */}
+              <div className="border-b border-gray-200 py-4 flex justify-between items-center">
+                <span className="text-[11px] uppercase tracking-widest font-medium text-gray-900">Collection</span>
+                <span className="text-[11px] text-gray-500 mr-5">Lumière Signature</span>
+              </div>
+              {/* Vendor Code Row */}
+              <div className="border-b border-gray-200 py-4 flex justify-between items-center">
+                <span className="text-[11px] uppercase tracking-widest font-medium text-gray-900">Vendor Code</span>
+                <span className="text-[11px] text-gray-500 mr-5">{product.id.split('-').join('').slice(0,8).toUpperCase()}</span>
+              </div>
             </div>
-
-            {/* Vendor Code Row */}
-            <div className="border-b border-gray-200 py-4 flex justify-between items-center">
-              <span className="text-[11px] uppercase tracking-widest font-medium text-gray-900">Vendor Code</span>
-              <span className="text-[11px] text-gray-500 mr-5">{product.id.split('-').join('').slice(0,8).toUpperCase()}</span>
-            </div>
-          </div>
+          )}
 
           {/* Trust Highlights */}
           <div className="grid grid-cols-3 gap-4 border-y border-gray-200 py-6 mb-8">
