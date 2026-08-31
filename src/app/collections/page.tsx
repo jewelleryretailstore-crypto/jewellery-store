@@ -36,13 +36,13 @@ export default function CollectionsPage() {
   ];
 
   return (
-    <div className="relative flex flex-col min-h-screen bg-[#faf9f6]">
+    <div className="relative flex flex-col min-h-screen bg-[#F7F5F0]">
       <DiamondWatermark opacity={0.15} className="inset-0" />
 
       {/* Header */}
       <section className="relative z-10 pt-32 pb-16 md:pt-40 px-6 text-center">
         <FadeIn direction="up">
-          <h1 className="font-serif text-5xl md:text-6xl text-[#111111] mb-6">Our Collections</h1>
+          <h1 className="font-serif text-5xl md:text-6xl text-[#171716] mb-6">Our Collections</h1>
           <p className="font-sans font-light text-gray-600 max-w-2xl mx-auto text-lg">
             Curated assortments of our finest pieces, each telling a distinct story of craftsmanship, heritage, and style.
           </p>
@@ -57,7 +57,7 @@ export default function CollectionsPage() {
               key={collection.id} 
               className={`${collection.className} ${
                   collection.id === "the-essentials" 
-                    ? "shadow-[0_0_60px_-15px_rgba(212,175,55,0.6)] rounded-sm relative" 
+                    ? "shadow-[0_0_60px_-15px_rgba(184,154,90,0.6)] rounded-sm relative" 
                     : ""
               }`}
             >
@@ -65,8 +65,8 @@ export default function CollectionsPage() {
                 href={`/category/${collection.id}`}
                 className={`group relative block w-full h-full overflow-hidden bg-gray-200 rounded-sm transition-all duration-500 ${
                   collection.id === "the-essentials" 
-                    ? "border border-[#d4af37]/30 hover:border-[#d4af37] hover:shadow-[inset_0_0_20px_rgba(212,175,55,0.3)]" 
-                    : "border border-transparent hover:border-[#d4af37]/30"
+                    ? "border border-gray-300 hover:border-[#B89A5A] hover:shadow-[inset_0_0_20px_rgba(184,154,90,0.3)]" 
+                    : "border border-transparent hover:border-[#B89A5A]/30"
                 }`}
               >
                 <Image
@@ -84,7 +84,7 @@ export default function CollectionsPage() {
                     <h2 className="font-serif text-3xl md:text-4xl text-white mb-2 flex items-center gap-3">
                       {collection.title}
                       {collection.id === "the-essentials" && (
-                        <span className="text-[10px] font-sans tracking-widest uppercase bg-[#d4af37] text-white px-3 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-300">
+                        <span className="text-[10px] font-sans tracking-widest uppercase bg-[#B89A5A] text-white px-3 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-300">
                           Featured
                         </span>
                       )}

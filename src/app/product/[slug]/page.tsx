@@ -1,21 +1,30 @@
-import { getProductById, MOCK_PRODUCTS } from "@/lib/data";
+import { getProductById, getProductsByCategory, getProducts, MOCK_PRODUCTS } from "@/lib/data";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { Heart, Truck, Shield, RotateCcw, ChevronRight } from "lucide-react";
 import { DiamondWatermark } from "@/components/ui/DiamondWatermark";
 import ProductCard from "@/components/ui/ProductCard";
+import { ProductReviews } from "@/components/product/ProductReviews";
+import { ProductAssurance } from "@/components/product/ProductAssurance";
+import { SimilarBudgetDesigns } from "@/components/product/SimilarBudgetDesigns";
+import { AddToCartButton } from "@/components/product/AddToCartButton";
 
 export default async function ProductPage({ params }: { params: Promise<{ slug: string }> }) {
   const resolvedParams = await params;
-  const product = getProductById(resolvedParams.slug);
+  const product = await getProductById(resolvedParams.slug);
 
   if (!product) {
     notFound();
   }
 
+  // Get similar products based on category, excluding current product
+  const similarProducts = (await getProductsByCategory(product.category))
+    .filter((p: any) => p.id !== product.id)
+    .slice(0, 4);
+
   return (
-    <div className="relative font-sans bg-[#faf9f6]">
+    <div className="relative font-sans bg-[#F7F5F0]">
       <DiamondWatermark opacity={0.15} className="inset-0" />
       
       <div className="container relative z-10 mx-auto px-6 pt-32 pb-8 md:pt-40 md:pb-16 font-sans">
@@ -33,7 +42,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
         {/* Image Gallery */}
         <div className="space-y-4">
-          <div className="relative aspect-square bg-[#faf9f6] w-full group">
+          <div className="relative aspect-square bg-[#F7F5F0] w-full group">
             <button className="absolute top-6 right-6 z-10 text-gray-400 hover:text-red-500 transition-colors">
               <Heart className="w-6 h-6" />
             </button>
@@ -66,14 +75,14 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           <div className="mb-8">
             <h1 className="font-serif text-3xl md:text-4xl mb-2 uppercase tracking-wide">{product.name}</h1>
             <div className="flex items-center gap-2 mb-4">
-              <div className="flex text-[#d4af37]">
+              <div className="flex text-[#B89A5A]">
                 {[...Array(5)].map((_, i) => (
                   <svg key={i} className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                   </svg>
                 ))}
               </div>
-              <span className="text-[11px] font-medium text-gray-500 uppercase tracking-widest">4.9 (327 Reviews)</span>
+              <span className="text-[11px] font-medium text-gray-500 uppercase tracking-widest">Customer Reviews</span>
             </div>
             <p className="text-gray-900 font-medium text-sm mb-4">
               {product.material} {product.category.slice(0, 1).toUpperCase() + product.category.slice(1, -1)} {product.diamondType ? 'with Diamonds' : ''}
@@ -87,10 +96,8 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
           {/* Actions */}
           <div className="flex gap-4 mb-10">
-            <button className="flex-1 bg-[#111111] text-white py-4 uppercase tracking-widest text-[11px] transition-all duration-500 rounded-[5px] border border-[#d4af37]/30 hover:border-[#d4af37] hover:shadow-[0_0_20px_rgba(212,175,55,0.3)]">
-              Add to Cart
-            </button>
-            <button className="flex-1 bg-transparent text-[#111111] py-4 uppercase tracking-widest text-[11px] transition-all duration-500 rounded-[5px] border border-[#d4af37]/30 hover:border-[#d4af37] hover:shadow-[0_0_20px_rgba(212,175,55,0.3)]">
+            <AddToCartButton productId={product.databaseId || 0} />
+            <button className="flex-1 bg-transparent text-[#171716] py-4 uppercase tracking-widest text-[11px] font-medium transition-all duration-500 rounded-none border border-[#171716]/20 hover:border-[#171716] hover:bg-[#171716] hover:text-white">
               Buy It Now
             </button>
           </div>
@@ -110,7 +117,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                     <option>US 7</option>
                     <option>US 8</option>
                   </select>
-                  <ChevronRight className="w-3 h-3 text-gray-400 group-hover:text-black transition-colors rotate-90" />
+                  <ChevronRight className="w-3 h-3 text-gray-400 group-hover:text-[#171716] transition-colors rotate-90" />
                 </div>
               </div>
             )}
@@ -124,7 +131,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                     <option>Lab-Grown Diamonds</option>
                     <option>Natural Diamonds</option>
                   </select>
-                  <ChevronRight className="w-3 h-3 text-gray-400 group-hover:text-black transition-colors rotate-90" />
+                  <ChevronRight className="w-3 h-3 text-gray-400 group-hover:text-[#171716] transition-colors rotate-90" />
                 </div>
               </div>
             )}
@@ -139,7 +146,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                   <option>18K Rose Gold</option>
                   <option>Platinum</option>
                 </select>
-                <ChevronRight className="w-3 h-3 text-gray-400 group-hover:text-black transition-colors rotate-90" />
+                <ChevronRight className="w-3 h-3 text-gray-400 group-hover:text-[#171716] transition-colors rotate-90" />
               </div>
             </div>
 
@@ -172,6 +179,47 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             </div>
           </div>
 
+          {/* Product Specifications */}
+          <div className="mb-8">
+            <h3 className="font-sans font-medium uppercase tracking-widest text-[11px] mb-4 text-[#171716]">
+              Product Specifications
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 text-xs font-light text-gray-600">
+              {product.diamondType && (
+                <>
+                  <div className="flex justify-between border-b border-gray-100 pb-2">
+                    <span className="font-medium text-gray-900">Diamond Shape</span>
+                    <span>Round Brilliant</span>
+                  </div>
+                  <div className="flex justify-between border-b border-gray-100 pb-2">
+                    <span className="font-medium text-gray-900">Carat Weight</span>
+                    <span>1.50ct Centre</span>
+                  </div>
+                  <div className="flex justify-between border-b border-gray-100 pb-2">
+                    <span className="font-medium text-gray-900">Colour & Clarity</span>
+                    <span>F–G / VS</span>
+                  </div>
+                  <div className="flex justify-between border-b border-gray-100 pb-2">
+                    <span className="font-medium text-gray-900">Certification</span>
+                    <span>IGI Certified</span>
+                  </div>
+                </>
+              )}
+              <div className="flex justify-between border-b border-gray-100 pb-2">
+                <span className="font-medium text-gray-900">Metal Weight</span>
+                <span>Approx. 4.2g</span>
+              </div>
+              <div className="flex justify-between border-b border-gray-100 pb-2">
+                <span className="font-medium text-gray-900">Band Dimensions</span>
+                <span>1.8mm width x 1.6mm thickness</span>
+              </div>
+              <div className="flex justify-between border-b border-gray-100 pb-2">
+                <span className="font-medium text-gray-900">Setting Style</span>
+                <span>Cathedral Solitaire, 4-Prong</span>
+              </div>
+            </div>
+          </div>
+
           {/* Educational Guides */}
           <div className="space-y-4">
             {[
@@ -181,7 +229,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
               'Care Guide: How to care for your jewellery'
             ].map((tab) => (
               <div key={tab} className="border-b border-gray-200 pb-4">
-                <button className="w-full flex justify-between items-center text-[11px] uppercase tracking-widest font-medium hover:text-[#d4af37] transition-colors">
+                <button className="w-full flex justify-between items-center text-[11px] uppercase tracking-widest font-medium hover:text-[#B89A5A] transition-colors">
                   {tab}
                   <span className="text-lg font-light">+</span>
                 </button>
@@ -196,9 +244,6 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       <div className="mt-32 pt-16 border-t border-gray-200">
         <div className="flex justify-between items-end mb-10">
           <h2 className="font-serif text-xl md:text-2xl tracking-wide uppercase text-gray-900">You Might Also Like</h2>
-          <Link href="/collections" className="text-xs font-medium uppercase tracking-widest text-gray-500 hover:text-black transition-colors">
-            See More
-          </Link>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {MOCK_PRODUCTS.filter(p => p.id !== product.id).slice(0, 4).map((relatedProduct) => (
@@ -206,7 +251,28 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           ))}
         </div>
       </div>
-      
+
+      {/* CUSTOMER REVIEWS */}
+      <ProductReviews />
+
+      {/* CUSTOMERS WHO VIEWED THIS ALSO VIEWED */}
+      <div className="mt-24 pt-16 border-t border-gray-200">
+        <div className="flex justify-between items-end mb-10">
+          <h2 className="font-serif text-xl md:text-2xl tracking-wide uppercase text-gray-900">Customers who viewed this also viewed</h2>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {MOCK_PRODUCTS.filter(p => p.id !== product.id).reverse().slice(0, 4).map((relatedProduct) => (
+            <ProductCard key={relatedProduct.id} product={relatedProduct} />
+          ))}
+        </div>
+      </div>
+
+      {/* ASSURANCE */}
+      <ProductAssurance />
+
+      {/* SIMILAR BUDGET DESIGNS */}
+      <SimilarBudgetDesigns products={MOCK_PRODUCTS.slice(2, 6)} />
+
     </div>
     </div>
   );

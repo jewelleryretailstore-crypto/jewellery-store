@@ -1,5 +1,8 @@
+import { fetchGraphQL } from './wordpress';
+
 export type Product = {
   id: string;
+  databaseId?: number;
   name: string;
   category: string;
   price: number;
@@ -71,12 +74,87 @@ export const MOCK_PRODUCTS: Product[] = [
   }
 ];
 
-export function getProductsByCategory(slug: string) {
-  if (slug === "jewellery") return MOCK_PRODUCTS;
-  if (slug === "new-in") return MOCK_PRODUCTS.filter(p => p.isNew);
-  return MOCK_PRODUCTS.filter((p) => p.category === slug);
+// Helper function to parse WooCommerce price strings (e.g. "₹38,000.00" -> 38000)
+function parseWooPrice(priceString?: string): number {
+  if (!priceString) return 0;
+  return Number(priceString.replace(/[^\d.-]/g, ''));
 }
 
-export function getProductById(id: string) {
-  return MOCK_PRODUCTS.find(p => p.id === id);
+export async function getAllProducts(): Promise<Product[]> {
+  let wpProducts: Product[] = [];
+  
+  try {
+    const query = `
+      query GetProducts {
+        products(first: 50) {
+          nodes {
+            id
+            databaseId
+            name
+            slug
+            productCategories {
+              nodes {
+                slug
+              }
+            }
+            image {
+              sourceUrl
+            }
+            galleryImages {
+              nodes {
+                sourceUrl
+              }
+            }
+            ... on SimpleProduct {
+              price
+            }
+            ... on VariableProduct {
+              price
+            }
+          }
+        }
+      }
+    `;
+    
+    const { data } = await fetchGraphQL(query);
+    
+    if (data?.products?.nodes) {
+      wpProducts = data.products.nodes.map((node: any): Product => {
+        const categorySlug = node.productCategories?.nodes?.[0]?.slug || 'uncategorized';
+        
+        return {
+          id: node.slug, // Use slug as ID for clean URLs
+          databaseId: node.databaseId,
+          name: node.name,
+          category: categorySlug,
+          price: parseWooPrice(node.price),
+          image: node.image?.sourceUrl || '/images/diamond.webp',
+          hoverImage: node.galleryImages?.nodes?.[1]?.sourceUrl || node.galleryImages?.nodes?.[0]?.sourceUrl || node.image?.sourceUrl || '/images/diamond.webp',
+          material: '18K Gold', // Default placeholder
+          isNew: true
+        };
+      });
+    }
+  } catch (error) {
+    console.error("Failed to fetch WooCommerce products:", error);
+  }
+
+  // Merge mock products and WordPress products
+  return [...wpProducts, ...MOCK_PRODUCTS];
+}
+
+export async function getProductById(id: string): Promise<Product | undefined> {
+  const allProducts = await getAllProducts();
+  return allProducts.find((p) => p.id === id);
+}
+
+export async function getProductsByCategory(categorySlug: string): Promise<Product[]> {
+  const allProducts = await getAllProducts();
+  if (categorySlug === "jewellery") return allProducts;
+  if (categorySlug === "new-in") return allProducts.filter(p => p.isNew);
+  return allProducts.filter((p) => p.category === categorySlug);
+}
+
+export async function getProducts(): Promise<Product[]> {
+  return await getAllProducts();
 }

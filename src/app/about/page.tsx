@@ -5,7 +5,7 @@ import { GlassProfileCard } from "@/components/ui/glass-profile-card";
 
 export default function AboutPage() {
   return (
-    <div className="flex flex-col min-h-screen font-sans bg-[#faf9f6]">
+    <div className="flex flex-col min-h-screen font-sans bg-[#F7F5F0]">
       {/* HERO SECTION */}
       <section className="relative h-[70vh] w-full flex items-center justify-center overflow-hidden">
         <ScaleImage className="absolute inset-0 z-0">
@@ -16,7 +16,7 @@ export default function AboutPage() {
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-black/30" />
+          <div className="absolute inset-0 bg-[#171716]/30" />
         </ScaleImage>
         
         <div className="relative z-10 text-center text-white px-4 max-w-3xl mt-20">
@@ -34,7 +34,7 @@ export default function AboutPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           <div>
             <FadeIn delay={0.1} direction="left">
-              <h2 className="font-serif text-4xl mb-6 text-[#111111]">Our Story</h2>
+              <h2 className="font-serif text-4xl mb-6 text-[#171716]">Our Story</h2>
               <p className="font-light text-gray-600 text-lg leading-relaxed mb-6">
                 Lumière & Co. was founded on a simple premise: jewelry should be as enduring as the moments it commemorates. We believe in the quiet power of exceptional craftsmanship and the timeless appeal of understated elegance.
               </p>
@@ -57,9 +57,9 @@ export default function AboutPage() {
       </section>
 
       {/* CRAFTSMANSHIP GRID */}
-      <section className="py-24 px-6 container mx-auto bg-white">
+      <section className="py-24 px-6 container mx-auto bg-[#FCFBF8]">
         <FadeIn delay={0.1} direction="up" className="text-center mb-16">
-          <h2 className="font-serif text-4xl mb-4 text-[#111111]">The Art of Creation</h2>
+          <h2 className="font-serif text-4xl mb-4 text-[#171716]">The Art of Creation</h2>
           <p className="font-light text-gray-600 max-w-2xl mx-auto">
             From the initial sketch to the final polish, our master jewelers pour their expertise and passion into every detail.
           </p>
@@ -76,7 +76,7 @@ export default function AboutPage() {
                   className="object-cover transition-transform duration-700 hover:scale-105"
                 />
               </div>
-              <h3 className="font-serif text-xl mb-2 text-[#111111]">Vision & Design</h3>
+              <h3 className="font-serif text-xl mb-2 text-[#171716]">Vision & Design</h3>
               <p className="text-center font-light text-sm text-gray-500">Conceiving forms that balance contemporary aesthetics with classic proportions.</p>
             </div>
           </StaggerItem>
@@ -91,7 +91,7 @@ export default function AboutPage() {
                   className="object-cover transition-transform duration-700 hover:scale-105"
                 />
               </div>
-              <h3 className="font-serif text-xl mb-2 text-[#111111]">Ethical Sourcing</h3>
+              <h3 className="font-serif text-xl mb-2 text-[#171716]">Ethical Sourcing</h3>
               <p className="text-center font-light text-sm text-gray-500">Selecting only the finest materials, from responsibly mined gold to lab-grown diamonds.</p>
             </div>
           </StaggerItem>
@@ -106,7 +106,7 @@ export default function AboutPage() {
                   className="object-cover transition-transform duration-700 hover:scale-105"
                 />
               </div>
-              <h3 className="font-serif text-xl mb-2 text-[#111111]">Masterful Execution</h3>
+              <h3 className="font-serif text-xl mb-2 text-[#171716]">Masterful Execution</h3>
               <p className="text-center font-light text-sm text-gray-500">Employing centuries-old techniques alongside modern innovation to achieve perfection.</p>
             </div>
           </StaggerItem>
@@ -114,7 +114,7 @@ export default function AboutPage() {
       </section>
 
       {/* THE TEAM SECTION */}
-      <section className="py-24 px-6 relative overflow-hidden bg-[#111111]">
+      <section className="py-24 px-6 relative overflow-hidden bg-[#171716]">
         {/* Background Image for the team section to make glassmorphism pop */}
         <div className="absolute inset-0 z-0 opacity-20">
           <Image 
@@ -127,7 +127,7 @@ export default function AboutPage() {
         
         <div className="container mx-auto relative z-10">
           <FadeIn delay={0.1} direction="up" className="text-center mb-16">
-            <h2 className="font-serif text-4xl mb-4 text-[#faf9f6]">Meet the Artisans</h2>
+            <h2 className="font-serif text-4xl mb-4 text-[#F7F5F0]">Meet the Artisans</h2>
             <p className="font-light text-gray-400 max-w-2xl mx-auto">
               The visionary minds and skilled hands behind every Lumière & Co. creation.
             </p>
@@ -163,7 +163,7 @@ export default function AboutPage() {
       </section>
 
       {/* PHILOSOPHY */}
-      <section className="bg-[#faf9f6] text-[#111111] py-24 text-center px-6">
+      <section className="bg-[#F7F5F0] text-[#171716] py-24 text-center px-6">
         <FadeIn delay={0.2} direction="up" className="max-w-3xl mx-auto">
           <h2 className="font-serif text-4xl mb-8 leading-snug">
             &quot;We do not simply make jewelry; we craft artifacts of memory, meant to capture the light of your most precious moments.&quot;

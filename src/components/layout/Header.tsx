@@ -6,14 +6,19 @@ import { usePathname } from "next/navigation";
 import { Search, User, Heart, ShoppingBag, Menu, X, MapPin, Calendar } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Monogram } from "@/components/ui/Monogram";
+import { useWishlist } from "@/context/WishlistContext";
+import { useCart } from "@/context/CartContext";
 
 const navLinks = [
-  { name: "New In", href: "/category/new-in" },
-  { name: "Engagement", href: "/bridal" },
+  { name: "All Jewellery", href: "/collections" },
+  { name: "Gold", href: "/category/gold" },
+  { name: "Diamond", href: "/category/diamonds" },
+  { name: "Earrings", href: "/category/earrings" },
+  { name: "Daily Wear", href: "/category/daily-wear" },
+  { name: "Gemstone", href: "/category/gemstone" },
   { name: "Wedding", href: "/bridal" },
-  { name: "Jewellery", href: "/collections" },
-  { name: "Diamonds", href: "/lab-grown-diamonds" },
-  { name: "Bespoke", href: "/about" },
+  { name: "Gifting", href: "/category/gifting" },
+  { name: "Under 50K", href: "/category/under-50k" },
 ];
 
 export default function Header() {
@@ -21,6 +26,8 @@ export default function Header() {
   const [isHovered, setIsHovered] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
+  const { wishlist } = useWishlist();
+  const { cart, setIsCartOpen } = useCart();
 
   // Pages with full-bleed dark hero images behind the header
   const hasDarkHero = pathname === "/" || pathname === "/bridal" || pathname === "/lab-grown-diamonds";
@@ -59,22 +66,13 @@ export default function Header() {
             <Menu className="w-5 h-5" />
           </button>
 
-          {/* Desktop Left Icons (Location / Appointment) */}
-          <div className={`hidden lg:flex items-center space-x-6 w-1/3 transition-colors duration-500 ${isSolid ? 'text-gray-800' : 'text-white'}`}>
-            <Link href="/contact" className="flex items-center space-x-2 hover:text-[#d4af37] transition-colors group">
-              <MapPin className="w-4 h-4 stroke-[1.5]" />
-              <span className="text-[10px] uppercase tracking-widest group-hover:text-[#d4af37]">Showrooms</span>
-            </Link>
-            <Link href="/contact" className="flex items-center space-x-2 hover:text-[#d4af37] transition-colors group">
-              <Calendar className="w-4 h-4 stroke-[1.5]" />
-              <span className="text-[10px] uppercase tracking-widest group-hover:text-[#d4af37]">Appointment</span>
-            </Link>
-          </div>
+          {/* Desktop Left Area (Empty to maintain flex-between balance) */}
+          <div className="hidden lg:flex w-1/3"></div>
 
           {/* Center Logo */}
           <div className="flex-shrink-0 text-center w-1/3 flex justify-center">
             <Link href="/">
-              <h1 className={`font-serif text-3xl md:text-4xl tracking-[0.2em] uppercase transition-colors duration-500 ${isSolid ? 'text-[#111111]' : 'text-white'}`}>
+              <h1 className={`font-serif text-3xl md:text-4xl tracking-[0.2em] uppercase transition-colors duration-500 ${isSolid ? 'text-[#171716]' : 'text-white'}`}>
                 Lumière
               </h1>
             </Link>
@@ -82,20 +80,27 @@ export default function Header() {
 
           {/* Right Icons */}
           <div className={`flex items-center justify-end space-x-5 lg:space-x-6 w-1/3 transition-colors duration-500 ${isSolid ? 'text-gray-800' : 'text-white'}`}>
-            <button className="hover:text-[#d4af37] transition-colors hidden sm:block">
+            <button className="hover:text-[#B89A5A] transition-colors hidden sm:block">
               <Search className="w-[18px] h-[18px] stroke-[1.5]" />
             </button>
-            <button className="hover:text-[#d4af37] transition-colors hidden sm:block">
+            <Link href="/account" className="hover:text-[#B89A5A] transition-colors hidden sm:block">
               <User className="w-[18px] h-[18px] stroke-[1.5]" />
-            </button>
-            <button className="hover:text-[#d4af37] transition-colors hidden sm:block">
+            </Link>
+            <button className="hover:text-[#B89A5A] transition-colors hidden sm:block relative">
               <Heart className="w-[18px] h-[18px] stroke-[1.5]" />
+              {wishlist.length > 0 && (
+                <span className={`absolute -top-1.5 -right-2 text-[9px] w-4 h-4 flex items-center justify-center rounded-full font-medium transition-colors duration-500 ${isSolid ? 'bg-[#B89A5A] text-white' : 'bg-white text-[#171716]'}`}>
+                  {wishlist.length}
+                </span>
+              )}
             </button>
-            <button className="hover:text-[#d4af37] transition-colors relative">
+            <button onClick={() => setIsCartOpen(true)} className="hover:text-[#B89A5A] transition-colors relative">
               <ShoppingBag className="w-[18px] h-[18px] stroke-[1.5]" />
-              <span className={`absolute -top-1.5 -right-2 text-[9px] w-4 h-4 flex items-center justify-center rounded-full font-medium transition-colors duration-500 ${isSolid ? 'bg-[#d4af37] text-white' : 'bg-white text-black'}`}>
-                0
-              </span>
+              {(cart?.contents?.nodes?.length || 0) > 0 && (
+                <span className={`absolute -top-1.5 -right-2 text-[9px] w-4 h-4 flex items-center justify-center rounded-full font-medium transition-colors duration-500 ${isSolid ? 'bg-[#B89A5A] text-white' : 'bg-white text-[#171716]'}`}>
+                  {cart?.contents?.nodes?.reduce((acc, item) => acc + item.quantity, 0) || 0}
+                </span>
+              )}
             </button>
           </div>
         </div>
@@ -109,10 +114,10 @@ export default function Header() {
             <Link
               key={link.name}
               href={link.href}
-              className={`text-[11px] font-medium tracking-[0.15em] uppercase transition-colors relative group hover:text-[#d4af37] ${isSolid ? 'text-gray-800' : 'text-white'}`}
+              className={`text-[11px] font-medium tracking-[0.15em] uppercase transition-colors relative group hover:text-[#B89A5A] ${isSolid ? 'text-gray-800' : 'text-white'}`}
             >
               {link.name}
-              <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-[#d4af37] transition-all duration-300 group-hover:w-full" />
+              <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-[#B89A5A] transition-all duration-300 group-hover:w-full" />
             </Link>
           ))}
         </nav>
@@ -126,7 +131,7 @@ export default function Header() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/60 z-50 lg:hidden backdrop-blur-sm"
+              className="fixed inset-0 bg-[#171716]/60 z-50 lg:hidden backdrop-blur-sm"
               onClick={() => setMobileMenuOpen(false)}
             />
             <motion.div
@@ -138,8 +143,8 @@ export default function Header() {
             >
               <div className="flex justify-between items-center mb-12">
                 <div className="flex items-center gap-3">
-                  <Monogram className="w-6 h-6 text-[#111111] border-[#111111]/30 text-sm [&>div]:bg-[#111111]" />
-                  <h1 className="font-serif text-2xl tracking-[0.2em] uppercase text-[#111111]">Lumière</h1>
+                  <Monogram className="w-6 h-6 text-[#171716] border-[#171716]/30 text-sm [&>div]:bg-[#171716]" />
+                  <h1 className="font-serif text-2xl tracking-[0.2em] uppercase text-[#171716]">Lumière</h1>
                 </div>
                 <button onClick={() => setMobileMenuOpen(false)}>
                   <X className="w-6 h-6 text-gray-500" />
@@ -157,16 +162,6 @@ export default function Header() {
                   </Link>
                 ))}
               </nav>
-              <div className="flex flex-col gap-4 pt-8 border-t border-[#e6dfd1]">
-                <Link href="/contact" className="flex items-center space-x-3 text-gray-600" onClick={() => setMobileMenuOpen(false)}>
-                  <MapPin className="w-4 h-4" />
-                  <span className="text-xs uppercase tracking-widest">Showrooms</span>
-                </Link>
-                <Link href="/contact" className="flex items-center space-x-3 text-gray-600" onClick={() => setMobileMenuOpen(false)}>
-                  <Calendar className="w-4 h-4" />
-                  <span className="text-xs uppercase tracking-widest">Book Appointment</span>
-                </Link>
-              </div>
             </motion.div>
           </>
         )}

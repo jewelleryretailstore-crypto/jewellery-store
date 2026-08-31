@@ -8,13 +8,13 @@ export default function Icon() {
     (
       <div
         style={{
-          background: '#111111',
+          background: '#171716',
           width: '100%',
           height: '100%',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          color: '#d4af37',
+          color: '#B89A5A',
           fontFamily: 'serif',
           fontSize: 22,
           fontWeight: 300,

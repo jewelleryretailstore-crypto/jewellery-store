@@ -49,7 +49,7 @@ export function HeroAnimated({
   };
 
   return (
-    <section className="relative h-[85vh] w-full flex items-center justify-center overflow-hidden bg-[#111111]">
+    <section className="relative h-[85vh] w-full flex items-center justify-center overflow-hidden bg-[#171716]">
       <motion.div 
         initial={{ opacity: 0, scale: 1.1 }}
         animate={{ opacity: 0.6, scale: 1 }}
@@ -101,9 +101,9 @@ export function HeroAnimated({
         >
           <Link 
             href={buttonLink}
-            className="group relative inline-flex items-center justify-center px-10 py-4 overflow-hidden bg-transparent border border-[#d4af37]/30 rounded-[5px] hover:border-[#d4af37] hover:shadow-[0_0_20px_rgba(212,175,55,0.3)] transition-all duration-500"
+            className="group relative inline-flex items-center justify-center px-10 py-4 overflow-hidden bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white transition-all duration-500"
           >
-            <span className="relative z-10 uppercase tracking-widest text-sm text-white transition-colors duration-500">
+            <span className="relative z-10 uppercase tracking-widest text-sm text-white group-hover:text-[#171716] transition-colors duration-500">
               {buttonText}
             </span>
           </Link>

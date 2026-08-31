@@ -4,20 +4,39 @@
 @source "./";
 
 @theme {
-  --color-brand-ivory: #faf9f6;
-  --color-brand-champagne: #e6dfd1;
-  --color-brand-charcoal: #2d2d2d;
-  --color-brand-black: #111111;
-  --color-brand-gold: #d4af37;
+  --color-brand-primary: #171716;
+  --color-brand-secondary: #F7F5F0;
+  --color-brand-accent: #B89A5A;
+  --color-brand-surface: #FCFBF8;
+  --color-brand-muted: #8A8881;
+  --color-brand-border: #DDD8CC;
+  --color-brand-dark: #111110;
+  --color-brand-optional: #2A211C;
+  --color-brand-ivory: #F7F5F0; /* Kept for legacy compatibility */
+  --color-brand-champagne: #E5D8B9; /* Kept for legacy compatibility */
+  --color-brand-charcoal: #4A4945; /* Kept for legacy compatibility */
+  --color-brand-black: #171716; /* Kept for legacy compatibility */
+  --color-brand-gold: #B89A5A; /* Kept for legacy compatibility */
   
   --font-serif: var(--font-playfair);
   --font-sans: var(--font-inter);
 
   --animate-border-beam: border-beam calc(var(--duration)*1s) infinite linear;
+  --animate-glow-pulse: glow-pulse 2.5s ease-in-out infinite;
 
   @keyframes border-beam {
     100% {
       offset-distance: 100%;
+    }
+  }
+  @keyframes glow-pulse {
+    0%, 100% {
+      box-shadow: 0 0 10px rgba(184,154,90,0.4);
+      border-color: rgba(184,154,90,0.6);
+    }
+    50% {
+      box-shadow: 0 0 25px rgba(184,154,90,1);
+      border-color: rgba(184,154,90,1);
     }
   }
 }
