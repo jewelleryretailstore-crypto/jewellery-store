@@ -511,14 +511,23 @@
   .mb-1 {
     margin-bottom: var(--spacing);
   }
+  .mb-1\.5 {
+    margin-bottom: calc(var(--spacing) * 1.5);
+  }
   .mb-2 {
     margin-bottom: calc(var(--spacing) * 2);
+  }
+  .mb-2\.5 {
+    margin-bottom: calc(var(--spacing) * 2.5);
   }
   .mb-3 {
     margin-bottom: calc(var(--spacing) * 3);
   }
   .mb-4 {
     margin-bottom: calc(var(--spacing) * 4);
+  }
+  .mb-5 {
+    margin-bottom: calc(var(--spacing) * 5);
   }
   .mb-6 {
     margin-bottom: calc(var(--spacing) * 6);
@@ -912,6 +921,10 @@
     --tw-translate-y: 120%;
     translate: var(--tw-translate-x) var(--tw-translate-y);
   }
+  .translate-y-full {
+    --tw-translate-y: 100%;
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
   .scale-95 {
     --tw-scale-x: 95%;
     --tw-scale-y: 95%;
@@ -1299,6 +1312,9 @@
   .bg-\[\#F7F5F0\]\/85 {
     background-color: color-mix(in oklab, #F7F5F0 85%, transparent);
   }
+  .bg-\[\#F9F9F9\] {
+    background-color: #F9F9F9;
+  }
   .bg-\[\#FAFAFA\] {
     background-color: #FAFAFA;
   }
@@ -1497,6 +1513,12 @@
   .fill-white {
     fill: var(--color-white);
   }
+  .stroke-\[\#B89A5A\] {
+    stroke: #B89A5A;
+  }
+  .stroke-current {
+    stroke: currentcolor;
+  }
   .stroke-white {
     stroke: var(--color-white);
   }
@@ -1577,6 +1599,9 @@
   }
   .py-3 {
     padding-block: calc(var(--spacing) * 3);
+  }
+  .py-3\.5 {
+    padding-block: calc(var(--spacing) * 3.5);
   }
   .py-4 {
     padding-block: calc(var(--spacing) * 4);
@@ -2088,6 +2113,10 @@
     --tw-duration: 1000ms;
     transition-duration: 1000ms;
   }
+  .duration-\[1\.5s\] {
+    --tw-duration: 1.5s;
+    transition-duration: 1.5s;
+  }
   .duration-\[400ms\] {
     --tw-duration: 400ms;
     transition-duration: 400ms;
@@ -2095,6 +2124,14 @@
   .duration-\[800ms\] {
     --tw-duration: 800ms;
     transition-duration: 800ms;
+  }
+  .ease-\[cubic-bezier\(0\.19\,1\,0\.22\,1\)\] {
+    --tw-ease: cubic-bezier(0.19,1,0.22,1);
+    transition-timing-function: cubic-bezier(0.19,1,0.22,1);
+  }
+  .ease-\[cubic-bezier\(0\.25\,0\.46\,0\.45\,0\.94\)\] {
+    --tw-ease: cubic-bezier(0.25,0.46,0.45,0.94);
+    transition-timing-function: cubic-bezier(0.25,0.46,0.45,0.94);
   }
   .ease-in {
     --tw-ease: var(--ease-in);
