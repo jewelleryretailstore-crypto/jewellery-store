@@ -114,67 +114,71 @@ export default function CheckoutForm() {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 font-sans pb-24">
       {/* Checkout Form */}
-      <div className="lg:col-span-7 space-y-8">
-        <div className="bg-white p-8 border border-gray-200">
-          <h2 className="text-xl font-serif text-[#171716] mb-6">Billing Details</h2>
+      <div className="lg:col-span-7 space-y-10">
+        <div>
+          <h2 className="text-2xl font-serif text-[#171716] mb-6">Contact & Billing Details</h2>
           
-          {error && <div className="bg-red-50 text-red-600 p-4 text-sm mb-6 border border-red-100">{error}</div>}
+          {error && <div className="bg-red-50 text-red-600 p-4 text-sm mb-6 border border-red-100 rounded-md">{error}</div>}
 
           <form id="checkout-form" onSubmit={handleCheckout} className="space-y-6">
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <label className="block text-xs uppercase tracking-widest text-gray-500 mb-2">First Name *</label>
-                <input required type="text" name="firstName" value={formData.firstName} onChange={handleChange} className="w-full border border-gray-300 p-3 outline-none focus:border-[#B89A5A] text-sm" />
+            <div className="grid grid-cols-2 gap-5">
+              <div className="space-y-2">
+                <label className="block text-xs uppercase tracking-widest text-gray-500 font-medium">First Name <span className="text-red-500">*</span></label>
+                <input required type="text" name="firstName" value={formData.firstName} onChange={handleChange} className="w-full border border-gray-300 rounded-md p-3.5 outline-none focus:border-gray-900 focus:ring-1 focus:ring-gray-900 transition-all text-sm" />
               </div>
-              <div>
-                <label className="block text-xs uppercase tracking-widest text-gray-500 mb-2">Last Name *</label>
-                <input required type="text" name="lastName" value={formData.lastName} onChange={handleChange} className="w-full border border-gray-300 p-3 outline-none focus:border-[#B89A5A] text-sm" />
+              <div className="space-y-2">
+                <label className="block text-xs uppercase tracking-widest text-gray-500 font-medium">Last Name <span className="text-red-500">*</span></label>
+                <input required type="text" name="lastName" value={formData.lastName} onChange={handleChange} className="w-full border border-gray-300 rounded-md p-3.5 outline-none focus:border-gray-900 focus:ring-1 focus:ring-gray-900 transition-all text-sm" />
               </div>
             </div>
             
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <label className="block text-xs uppercase tracking-widest text-gray-500 mb-2">Email Address *</label>
-                <input required type="email" name="email" value={formData.email} onChange={handleChange} className="w-full border border-gray-300 p-3 outline-none focus:border-[#B89A5A] text-sm" />
+            <div className="grid grid-cols-2 gap-5">
+              <div className="space-y-2">
+                <label className="block text-xs uppercase tracking-widest text-gray-500 font-medium">Email Address <span className="text-red-500">*</span></label>
+                <input required type="email" name="email" value={formData.email} onChange={handleChange} className="w-full border border-gray-300 rounded-md p-3.5 outline-none focus:border-gray-900 focus:ring-1 focus:ring-gray-900 transition-all text-sm" />
               </div>
-              <div>
-                <label className="block text-xs uppercase tracking-widest text-gray-500 mb-2">Phone Number *</label>
-                <input required type="tel" name="phone" value={formData.phone} onChange={handleChange} className="w-full border border-gray-300 p-3 outline-none focus:border-[#B89A5A] text-sm" />
+              <div className="space-y-2">
+                <label className="block text-xs uppercase tracking-widest text-gray-500 font-medium">Phone Number <span className="text-red-500">*</span></label>
+                <input required type="tel" name="phone" value={formData.phone} onChange={handleChange} className="w-full border border-gray-300 rounded-md p-3.5 outline-none focus:border-gray-900 focus:ring-1 focus:ring-gray-900 transition-all text-sm" />
               </div>
             </div>
 
-            <div>
-              <label className="block text-xs uppercase tracking-widest text-gray-500 mb-2">Street Address *</label>
-              <input required type="text" name="address1" value={formData.address1} onChange={handleChange} className="w-full border border-gray-300 p-3 outline-none focus:border-[#B89A5A] text-sm" placeholder="House number and street name" />
+            <div className="space-y-2">
+              <label className="block text-xs uppercase tracking-widest text-gray-500 font-medium">Street Address <span className="text-red-500">*</span></label>
+              <input required type="text" name="address1" value={formData.address1} onChange={handleChange} className="w-full border border-gray-300 rounded-md p-3.5 outline-none focus:border-gray-900 focus:ring-1 focus:ring-gray-900 transition-all text-sm" placeholder="House number and street name" />
             </div>
 
-            <div className="grid grid-cols-3 gap-4">
-              <div>
-                <label className="block text-xs uppercase tracking-widest text-gray-500 mb-2">City *</label>
-                <input required type="text" name="city" value={formData.city} onChange={handleChange} className="w-full border border-gray-300 p-3 outline-none focus:border-[#B89A5A] text-sm" />
+            <div className="grid grid-cols-3 gap-5">
+              <div className="space-y-2">
+                <label className="block text-xs uppercase tracking-widest text-gray-500 font-medium">City <span className="text-red-500">*</span></label>
+                <input required type="text" name="city" value={formData.city} onChange={handleChange} className="w-full border border-gray-300 rounded-md p-3.5 outline-none focus:border-gray-900 focus:ring-1 focus:ring-gray-900 transition-all text-sm" />
               </div>
-              <div>
-                <label className="block text-xs uppercase tracking-widest text-gray-500 mb-2">State *</label>
-                <input required type="text" name="state" value={formData.state} onChange={handleChange} className="w-full border border-gray-300 p-3 outline-none focus:border-[#B89A5A] text-sm" />
+              <div className="space-y-2">
+                <label className="block text-xs uppercase tracking-widest text-gray-500 font-medium">State <span className="text-red-500">*</span></label>
+                <input required type="text" name="state" value={formData.state} onChange={handleChange} className="w-full border border-gray-300 rounded-md p-3.5 outline-none focus:border-gray-900 focus:ring-1 focus:ring-gray-900 transition-all text-sm" />
               </div>
-              <div>
-                <label className="block text-xs uppercase tracking-widest text-gray-500 mb-2">PIN Code *</label>
-                <input required type="text" name="postcode" value={formData.postcode} onChange={handleChange} className="w-full border border-gray-300 p-3 outline-none focus:border-[#B89A5A] text-sm" />
+              <div className="space-y-2">
+                <label className="block text-xs uppercase tracking-widest text-gray-500 font-medium">PIN Code <span className="text-red-500">*</span></label>
+                <input required type="text" name="postcode" value={formData.postcode} onChange={handleChange} className="w-full border border-gray-300 rounded-md p-3.5 outline-none focus:border-gray-900 focus:ring-1 focus:ring-gray-900 transition-all text-sm" />
               </div>
             </div>
             
-            <div>
-              <label className="block text-xs uppercase tracking-widest text-gray-500 mb-2">Country</label>
-              <input readOnly type="text" value="India" className="w-full border border-gray-300 p-3 bg-gray-50 text-gray-500 outline-none text-sm" />
+            <div className="space-y-2">
+              <label className="block text-xs uppercase tracking-widest text-gray-500 font-medium">Country / Region</label>
+              <input readOnly type="text" value="India" className="w-full border border-gray-200 rounded-md p-3.5 bg-gray-50/50 text-gray-500 outline-none text-sm cursor-not-allowed" />
             </div>
             
-            <div className="pt-4 border-t border-gray-200">
-              <h3 className="text-sm font-medium text-gray-900 mb-4">Payment Method</h3>
-              <div className="flex items-center gap-3 p-4 border border-[#B89A5A] bg-[#B89A5A]/5">
-                <input type="radio" checked readOnly className="w-4 h-4 accent-[#B89A5A]" />
-                <span className="text-sm text-gray-700">Cash on Delivery</span>
+            <div className="pt-8 mt-8 border-t border-gray-200">
+              <h2 className="text-2xl font-serif text-[#171716] mb-6">Payment Options</h2>
+              <div className="rounded-md border border-gray-200 overflow-hidden">
+                <div className="flex items-center gap-4 p-5 bg-gray-50/50 border-b border-gray-200">
+                  <input type="radio" id="cod" checked readOnly className="w-5 h-5 accent-gray-900" />
+                  <label htmlFor="cod" className="text-sm font-medium text-gray-900 cursor-pointer">Cash on Delivery</label>
+                </div>
+                <div className="p-5 bg-white text-sm text-gray-500 leading-relaxed">
+                  Pay with cash upon delivery. Your order will be shipped and you can pay the courier directly when it arrives.
+                </div>
               </div>
-              <p className="text-xs text-gray-500 mt-2">Pay with cash upon delivery. (Card/Razorpay integrations can be added later).</p>
             </div>
           </form>
         </div>
@@ -182,50 +186,58 @@ export default function CheckoutForm() {
 
       {/* Order Summary */}
       <div className="lg:col-span-5">
-        <div className="bg-[#F7F5F0] p-8 sticky top-32">
-          <h2 className="text-xl font-serif text-[#171716] mb-6">Your Order</h2>
+        <div className="bg-[#FAFAFA] rounded-xl p-8 sticky top-32 border border-gray-100 shadow-sm">
+          <h2 className="text-xl font-serif text-[#171716] mb-6">Order Summary</h2>
           
-          <div className="space-y-4 mb-6">
+          <div className="space-y-5 mb-8">
             {cart?.contents?.nodes?.map((item) => (
-              <div key={item.key} className="flex justify-between items-start pb-4 border-b border-gray-200 last:border-0 last:pb-0">
-                <div className="flex gap-4">
-                  <div className="w-16 h-16 bg-white relative">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={item.product.node.image?.sourceUrl || '/images/diamond.webp'} alt="" className="w-full h-full object-cover" />
-                  </div>
-                  <div>
-                    <p className="text-sm font-medium text-gray-900 line-clamp-1">{item.product.node.name}</p>
-                    <p className="text-xs text-gray-500 mt-1">Qty: {item.quantity}</p>
-                  </div>
+              <div key={item.key} className="flex gap-4 items-center">
+                <div className="w-16 h-16 bg-white rounded-md border border-gray-200 relative overflow-hidden flex-shrink-0">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={item.product.node.image?.sourceUrl || '/images/diamond.webp'} alt="" className="w-full h-full object-cover" />
+                  <span className="absolute -top-2 -right-2 bg-gray-900 text-white text-[10px] w-5 h-5 rounded-full flex items-center justify-center font-medium">
+                    {item.quantity}
+                  </span>
                 </div>
-                <p className="text-sm font-medium text-gray-900 whitespace-nowrap">{item.total}</p>
+                <div className="flex-grow">
+                  <p className="text-sm font-medium text-gray-900 line-clamp-1">{item.product.node.name}</p>
+                  <p className="text-xs text-gray-500 mt-1">{item.subtotal}</p>
+                </div>
               </div>
             ))}
           </div>
 
-          <div className="border-t border-gray-200 pt-6 space-y-3">
-            <div className="flex justify-between text-sm">
-              <span className="text-gray-600 uppercase tracking-widest text-[11px]">Subtotal</span>
-              <span className="font-medium">{cart?.subtotal}</span>
+          <div className="border-t border-gray-200 pt-6 space-y-4 mb-6">
+            <div className="flex justify-between text-sm text-gray-600">
+              <span>Subtotal</span>
+              <span>{cart?.subtotal}</span>
             </div>
-            <div className="flex justify-between text-sm">
-              <span className="text-gray-600 uppercase tracking-widest text-[11px]">Shipping</span>
-              <span className="font-medium text-[#B89A5A]">Free</span>
+            <div className="flex justify-between text-sm text-gray-600">
+              <span>Shipping</span>
+              <span>Free</span>
             </div>
-            <div className="flex justify-between text-lg font-serif pt-4 border-t border-gray-200">
-              <span className="text-gray-900">Total</span>
-              <span className="text-gray-900">{cart?.total}</span>
+          </div>
+
+          <div className="border-t border-gray-900 pt-6 mb-8">
+            <div className="flex justify-between items-baseline">
+              <span className="text-base font-medium text-[#171716]">Total</span>
+              <span className="text-2xl font-serif text-[#171716]">{cart?.subtotal}</span>
             </div>
           </div>
 
           <button 
-            type="submit"
+            type="submit" 
             form="checkout-form"
             disabled={loading}
-            className="w-full mt-8 py-4 bg-[#171716] text-white uppercase tracking-widest text-xs font-medium hover:bg-[#2A211C] transition-colors disabled:opacity-70 flex justify-center items-center"
+            className="w-full bg-[#171716] text-white py-4 text-xs uppercase tracking-widest hover:bg-[#2A211C] transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 rounded-md"
           >
             {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : 'Place Order'}
           </button>
+          
+          <p className="text-center text-[11px] text-gray-500 mt-6 flex justify-center items-center gap-2">
+            <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8V7a4 4 0 00-8 0v4h8z" /></svg>
+            Secure, encrypted checkout
+          </p>
         </div>
       </div>
     </div>
