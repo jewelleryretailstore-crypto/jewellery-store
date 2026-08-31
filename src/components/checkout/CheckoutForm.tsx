@@ -201,7 +201,7 @@ export default function CheckoutForm() {
                 </div>
                 <div className="flex-grow">
                   <p className="text-sm font-medium text-gray-900 line-clamp-1">{item.product.node.name}</p>
-                  <p className="text-xs text-gray-500 mt-1">{item.subtotal}</p>
+                  <p className="text-xs text-gray-500 mt-1">{item.total}</p>
                 </div>
               </div>
             ))}
