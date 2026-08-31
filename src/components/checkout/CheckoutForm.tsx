@@ -191,11 +191,13 @@ export default function CheckoutForm() {
           
           <div className="space-y-5 mb-8">
             {cart?.contents?.nodes?.map((item) => (
-              <div key={item.key} className="flex gap-4 items-center">
-                <div className="w-16 h-16 bg-white rounded-md border border-gray-200 relative overflow-hidden flex-shrink-0">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={item.product.node.image?.sourceUrl || '/images/diamond.webp'} alt="" className="w-full h-full object-cover" />
-                  <span className="absolute -top-2 -right-2 bg-gray-900 text-white text-[10px] w-5 h-5 rounded-full flex items-center justify-center font-medium">
+              <div key={item.key} className="flex gap-4 items-center pl-2 pt-2">
+                <div className="relative flex-shrink-0">
+                  <div className="w-16 h-16 bg-white rounded-md border border-gray-200 overflow-hidden">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={item.product.node.image?.sourceUrl || '/images/diamond.webp'} alt="" className="w-full h-full object-cover" />
+                  </div>
+                  <span className="absolute -top-2 -right-2 bg-gray-900 text-white text-[10px] w-5 h-5 rounded-full flex items-center justify-center font-medium z-10">
                     {item.quantity}
                   </span>
                 </div>
