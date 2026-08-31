@@ -201,6 +201,13 @@ export default function CheckoutForm() {
                 </div>
                 <div className="flex-grow">
                   <p className="text-sm font-medium text-gray-900 line-clamp-1">{item.product.node.name}</p>
+                  
+                  {item.variation?.node.attributes?.nodes && item.variation.node.attributes.nodes.length > 0 && (
+                    <p className='text-[10px] text-gray-500 mt-0.5 mb-1'>
+                      {item.variation.node.attributes.nodes.map(a => `${a.name.replace('pa_', '').replace(/\b\w/g, l => l.toUpperCase())}: ${a.value}`).join(' / ')}
+                    </p>
+                  )}
+                  
                   <p className="text-xs text-gray-500 mt-1">{item.total}</p>
                 </div>
               </div>

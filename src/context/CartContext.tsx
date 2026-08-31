@@ -15,6 +15,20 @@ type CartItem = {
       price: string;
     }
   };
+  variation?: {
+    node: {
+      id: string;
+      databaseId: number;
+      name: string;
+      price: string;
+      attributes?: {
+        nodes: {
+          name: string;
+          value: string;
+        }[];
+      };
+    };
+  };
   quantity: number;
   total: string;
 };
@@ -60,6 +74,20 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
                   image { sourceUrl }
                   ... on SimpleProduct { price }
                   ... on VariableProduct { price }
+                }
+              }
+              variation {
+                node {
+                  id
+                  databaseId
+                  name
+                  price
+                  attributes {
+                    nodes {
+                      name
+                      value
+                    }
+                  }
                 }
               }
               quantity

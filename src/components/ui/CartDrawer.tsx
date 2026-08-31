@@ -60,7 +60,13 @@ export function CartDrawer() {
                       <div className='flex-1 flex flex-col justify-between py-1'>
                         <div>
                           <h3 className='font-medium text-[#171716] text-sm'>{item.product.node.name}</h3>
-                          <p className='text-xs text-gray-500 mt-1'>{item.product.node.price}</p>
+                          <p className='text-xs text-gray-500 mt-1'>{item.variation?.node.price || item.product.node.price}</p>
+                          
+                          {item.variation?.node.attributes?.nodes && item.variation.node.attributes.nodes.length > 0 && (
+                            <p className='text-[10px] text-gray-500 mt-1'>
+                              {item.variation.node.attributes.nodes.map(a => `${a.name.replace('pa_', '').replace(/\b\w/g, l => l.toUpperCase())}: ${a.value}`).join(' / ')}
+                            </p>
+                          )}
                         </div>
                         <div className='flex items-center gap-4'>
                           <div className='flex items-center border border-gray-200'>
