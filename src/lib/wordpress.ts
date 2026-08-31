@@ -1,7 +1,10 @@
 const API_URL = process.env.NEXT_PUBLIC_WORDPRESS_GRAPHQL_URL || '';
 
 export async function fetchGraphQL(query: string, variables = {}) {
-  if (!API_URL) {
+  // Use Next.js API route on the client to bypass CORS issues. Use direct URL on server.
+  const endpoint = typeof window !== 'undefined' ? '/api/graphql' : API_URL;
+
+  if (!endpoint) {
     console.warn('WordPress GraphQL URL is not defined.');
     return { data: null };
   }
@@ -19,12 +22,12 @@ export async function fetchGraphQL(query: string, variables = {}) {
 
     const wooSession = localStorage.getItem('woo_session');
     if (wooSession) {
-      headers['woocommerce-session'] = `Session ${wooSession}`;
+      headers['woocommerce-session'] = wooSession.startsWith('Session ') ? wooSession : `Session ${wooSession}`;
     }
   }
 
   try {
-    const res = await fetch(API_URL, {
+    const res = await fetch(endpoint, {
       method: 'POST',
       headers,
       body: JSON.stringify({ query, variables }),

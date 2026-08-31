@@ -16,11 +16,11 @@ export default async function Home() {
 
   const categories = [
     { name: "Rings", image: "/images/RR-039-01White-_view5.webp", href: "/category/rings" },
-    { name: "Earrings", image: "/images/EAR-001.webp", href: "/category/earrings" },
-    { name: "Necklaces", image: "/images/NECK-001.webp", href: "/category/necklaces" },
-    { name: "Bracelets", image: "/images/BRACE-001.webp", href: "/category/bracelets" },
+    { name: "Earrings", image: "/images/GJSPD-197-01White-_view3.webp", href: "/category/earrings" },
+    { name: "Necklaces", image: "/images/Gem 01_White_Metal 02_0_1_1_1.webp", href: "/category/necklaces" },
+    { name: "Bracelets", image: "/images/diamond.webp", href: "/category/bracelets" },
     { name: "Bridal", image: "/images/Gem 01_White_Metal 02_0_1_1_1.webp", href: "/bridal" },
-    { name: "Gifts", image: "/images/gift-box.webp", href: "/gifts" },
+    { name: "Gifts", image: "/images/lifestyle_bg.jpg", href: "/gifts" },
   ];
 
   return (
@@ -220,9 +220,9 @@ export default async function Home() {
         images={[
           { src: "/images/RR-039-01White-_view5.webp", alt: "Diamond Ring" },
           { src: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?q=80&w=600&auto=format&fit=crop", alt: "Gold Jewelry" },
-          { src: "/images/EAR-001.webp", alt: "Diamond Earrings" },
+          { src: "/images/GJSPD-197-01White-_view3.webp", alt: "Diamond Earrings" },
           { src: "https://images.unsplash.com/photo-1596944924616-7b38e7cfac36?q=80&w=600&auto=format&fit=crop", alt: "Bridal Wear" },
-          { src: "/images/NECK-001.webp", alt: "Silver Necklace" },
+          { src: "/images/Gem 01_White_Metal 02_0_1_1_1.webp", alt: "Silver Necklace" },
         ]}
       />
 
